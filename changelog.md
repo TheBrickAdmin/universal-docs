@@ -6,6 +6,41 @@ description: Changelog for PowerShell Universal.
 
 ## [Downloads](https://ironmansoftware.com/release/powershell-universal)
 
+## 4.5.0 - 12/10/2024
+
+#### APIs
+
+* Added support for API parameter sets (#3798)
+* Fixed an issue where event hub connections didn't list the remote computer name (#3980)
+* Fixed an issue with event hub client logging
+* Added automatic reconnect to event hub client
+
+#### Apps
+
+* New-UDTooltip now sets a CSS class name based on the type of tooltip (#3899)
+* Removed the need to call Invoke-UDEndpoint with -Session for it to work (#2139)
+* Fixed an issue setting default app theme (#3943)
+* Fixed an issue with the admin console logged out page (#4090)
+
+#### Automation
+
+* Fixed an issue copying pipeline output (#3825)
+* Added -Silent to Invoke-PSUScript and Wait-PSUJob
+* Fixed an issue with grooming child jobs (#3884)
+* Fixed an issue with Wait-PSUJob returning duplicate output (#4013)
+* Fixed an issue where Get-PSUJob would not include the identity or parameters (#4063)
+* Fixed an issue where module scripts would disappear when adding\removing other scripts (#4112)
+* Fixed an issue with module scripts and Script Base Folder (#4092)
+
+#### Platform
+
+* Fixed an issue where the Reader role could clear logs (#3880)
+* Fixed an issue where errors in configuration files could cause them to disappear (#3850)
+* Fixed an issue with case sensitivity and logging target scopes (#3998)
+* Fixed an issue where the service could crash if losing connection to the database (#4012)
+* Fixed an issue where licenses would duplicate when installed as an environment variable (#3984)
+* Fixed an issue with variable types when stored in the database (#4113)
+
 ## 4.4.1 - 10/1/2024
 
 #### APIs
