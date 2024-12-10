@@ -4,6 +4,95 @@ description: Changelog for PowerShell Universal.
 
 # Changelog
 
+## 5.1.0 - 12/11/2024
+
+### Features
+
+#### Admin Console
+
+* Added -DarkAppBarLogo to New-PSUBranding (#3170)
+* Added .gitignore editor to git page (#3560)
+* Added configuration file reload dropdown (#3812)
+* Table page sizes are now sticky (#4023)
+* Added Nested Role field to roles property form.
+* Added Import Secrets button (#4080)
+* Added localized date time display to admin console (#3780)
+
+#### APIs
+
+* Added contact, license, version and terms of service to OpenAPI endpoint docs (#3900)
+* Added -ResponseVariable to Invoke-PSUEndpoint (#4054)
+
+#### Apps
+
+* Added -JavaScript to New-UDEndpoint (#3121)
+* Added support for enter key in prompts in apps (#3326)
+* Added support for Read-Host -AsSecureString
+* Added support for nested modals (#3163)
+* Added Columns and SelectedRowIds to $EventData in -LoadData for New-UDTable (#3982)
+
+#### Automation
+
+* Child jobs not display parent schedule (#3373)
+* Added support for copy\paste in terminals (#4096)
+
+#### Platform
+
+* Added -DefaultTokenLifetime to Set-PSUSettings and admin console (#2872)
+* Added preview support for Deployments (#4101)
+
+#### Portal
+
+* Added support for SimpleSelect in Widgets
+
+#### Tools
+
+* Added psu.exe git command line tools
+* Added psu.exe db migration command line tools
+
+### Bug Fixes
+
+#### Admin Console
+
+* Fixed an issue with the tab URLs updating incorrectly (#4062)
+* Fixed an issue when creating secrets (#4074)
+* Fixed a display issue with online licenses (#4068)
+* Fixed an issue logging in with SAML2 from the login page (#4075)
+* Fixed an issue displaying string arrays in schedule parameters (#4084)
+* Fixed an issue with the copy button in the API tester in non-secure sites (#4108)
+
+#### Apps
+
+* Fixed an issue with the unauthorized page (#4065)
+* Fixed an issue where the docs app would not load (#4067)
+* Fixed an issue with favicons (#4055)
+* Fixed an issue with dynamically registered components and Add-UDElement (#3585)
+* Fixed an issue with Invoke-UDRedirect -OpenInNewWindow (#4104)
+
+#### APIs
+
+* Fixed an issue with the endpoint table (#4066)
+* Fixed an issue with the endpoint tester and non-JSON values (#4098)
+
+#### Cmdlets
+
+* Fixed an issue where Get-PSUCache threw an exception rather than returning $null when the key was not found (#4078)
+
+#### Automation
+
+* Fixed an issue with Write-PSFramework and job logs (#4071)
+
+#### Platform
+
+* Fixed an issue loading the OpenTelemetry plugin in Docker (#4081)
+* Fixed an issue where user sessions were groomed before the data retention setting (#4089)
+* Fixed an issue with user scoped logging (#4103)
+* Fixed an issue with the configuration file system watcher
+
+#### Portal
+
+* Fixed an issue with script table display (#4083)
+
 ## 5.0.16 - 11/18/2024
 
 #### Admin Console

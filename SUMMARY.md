@@ -164,7 +164,11 @@
 
 ## ⚙️ Configuration <a href="#config" id="config"></a>
 
+* [App Settings](config/settings.md)
+* [Best Practices](config/best-practices.md)
+* [Branding](config/login-page.md)
 * [Command Line Options](config/command-line-options.md)
+* [Deployments](config/deployments.md)
 * [Environments](config/environments.md)
 * [Feature Flags](config/feature-flags.md)
 * [Git](config/git.md)
@@ -173,14 +177,12 @@
   * [High Availability](config/hosting/high-availability.md)
   * [IIS](config/hosting/hosting-iis.md)
   * [Reverse Proxy](config/hosting/reverse-proxy.md)
-* [Branding](config/login-page.md)
 * [Management API](config/management-api.md)
 * [Module](config/module.md)
 * [Persistence](config/persistence.md)
-* [App Settings](config/settings.md)
+* [psucli](config/psucli.md)
 * [Repository](config/repository.md)
 * [Running as a Service Account](config/running-as-a-service-account.md)
-* [Best Practices](config/best-practices.md)
 
 ## 👩‍💻 Development
 

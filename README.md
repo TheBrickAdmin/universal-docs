@@ -6,11 +6,11 @@ description: The ultimate command center for your PowerShell environment.
 
 <figure><img src=".gitbook/assets/image (354).png" alt=""><figcaption><p>PowerShell Universal Admin Console</p></figcaption></figure>
 
-PowerShell Universal provides a centralized location to store and run scripts, build modules, expose REST APIs and share them with end users via automatic or custom user interfaces, setup schedules and more.&#x20;
+PowerShell Universal provides a centralized location to store and run scripts, build modules, expose REST APIs and share them with end users via automatic or custom user interfaces, setup schedules and more.
 
-## **Universal APIs**
+## **APIs**
 
-Expose scripts as RESTful HTTP APIs for integration from any platform.
+Transform your PowerShell scripts into RESTful HTTP and WebSocket APIs for seamless integration across platforms. Leverage OpenAPI provide documentation and additional automation opportunities.
 
 <figure><img src=".gitbook/assets/image (332).png" alt=""><figcaption><p>Execute PowerShell with HTTP</p></figcaption></figure>
 
@@ -23,9 +23,9 @@ Expose scripts as RESTful HTTP APIs for integration from any platform.
 * [File Hosting](https://docs.powershelluniversal.com/platform/published-folders)
 * [Event Hubs](api/event-hubs.md)
 
-## **Universal Automation**
+## **Automation**
 
-Execute, schedule, secure and audit scripts in an easy-to-use, web-interface.
+Streamline your automation with an intuitive web interface for executing, scheduling, securing, and auditing PowerShell scripts. Effortlessly manage tasks and access in-browser terminals to maximize efficiency and control in your automation workflows.
 
 <figure><img src=".gitbook/assets/image (345).png" alt=""><figcaption><p>Run PowerShell Scripts</p></figcaption></figure>
 
@@ -39,9 +39,9 @@ Execute, schedule, secure and audit scripts in an easy-to-use, web-interface.
 * [Concurrency Controls](https://docs.powershelluniversal.com/automation/scripts#concurrent-jobs)
 * [Ad-Hoc Terminals](https://docs.powershelluniversal.com/automation/terminals)
 
-## **Universal Apps**
+## **Apps**
 
-Build web-based applications for users with highly interactive user interfaces that run your scripts.
+Create fully customizable, interactive web apps tailored for your internal users using PowerShell. With over 70 versatile controls and seamless integration to other PowerShell modules and scripts, you can build powerful interfaces to enhance productivity and collaboration.
 
 <figure><img src=".gitbook/assets/image (331).png" alt=""><figcaption><p>Universal Dashboard</p></figcaption></figure>
 
@@ -56,7 +56,7 @@ Build web-based applications for users with highly interactive user interfaces t
 * [Extensible Platform](https://docs.powershelluniversal.com/userinterfaces/dashboards/components/building-custom-components)
 * [Custom Styling and Branding](https://docs.powershelluniversal.com/userinterfaces/dashboards/themes)
 
-## Universal Hosting
+## Hosting
 
 PowerShell Universal is cross-platform and can be hosted on-premises, in the cloud or even on a Raspberry Pi.
 
@@ -69,9 +69,9 @@ PowerShell Universal is cross-platform and can be hosted on-premises, in the clo
 * [Windows Service](https://docs.powershelluniversal.com/getting-started#msi-install-windows)
 * [HTTPS](https://docs.powershelluniversal.com/config/hosting#configuring-https)
 
-## Universal Security
+## Security
 
-Grant role-based access to different aspects of your automation environment with your choice of authentication and authorization integrations.
+PowerShell Universal is a versatile, cross-platform solution that adapts to your hosting needs. Deploy seamlessly on AWS, Azure, IIS, or your on-premises infrastructure—even on compact devices like a Raspberry Pi. Flexibility meets power for automation anywhere.
 
 <figure><img src=".gitbook/assets/image (317).png" alt=""><figcaption><p>Security Settings</p></figcaption></figure>
 
@@ -86,9 +86,9 @@ Grant role-based access to different aspects of your automation environment with
 * [Script Access Controls](https://docs.powershelluniversal.com/config/security/access-controls)
 * [Custom and Built-In Roles](https://docs.powershelluniversal.com/config/security#built-in-roles)
 
-## Universal Development
+## Development
 
-Take advantage of rich development tools such as IntelliSense, code formatting, error checking and debugger integration without leaving your browser.
+PowerShell Universal delivers a seamless development experience with built-in tools like IntelliSense, syntax highlighting, error checking, formatting, and debugging—all accessible directly from your browser. Enhance productivity further with a dedicated VS Code extension and integrated Git support for streamlined version control.
 
 <figure><img src=".gitbook/assets/image (189).png" alt=""><figcaption><p>Development Tools in PowerShell Universal</p></figcaption></figure>
 
@@ -102,9 +102,9 @@ Take advantage of rich development tools such as IntelliSense, code formatting, 
 * [Desktop Mode](https://docs.powershelluniversal.com/platform/desktop-mode)
 * [Hotkeys](https://docs.powershelluniversal.com/platform/desktop-mode/hotkeys)
 
-## Universal Platform
+## Platform
 
-Configure the platform to meet the needs of your environment.
+With support for PowerShell 7 and Windows PowerShell, seamless integration with PowerShell modules, and powerful tools for variable and secret management, it adapts to your needs. Enjoy multilingual support, compatibility with multiple database types (SQLite, SQL Server, PostgreSQL), and built-in high availability and load balancing for enterprise-grade scalability.
 
 <figure><img src=".gitbook/assets/image (137).png" alt=""><figcaption><p>Module Management</p></figcaption></figure>
 
@@ -116,16 +116,16 @@ Configure the platform to meet the needs of your environment.
 * [Git Integration](https://docs.powershelluniversal.com/config/git)
 * [Application Insights Integration](https://docs.powershelluniversal.com/platform/monitoring)
 
-## Universal Community
+## Community
 
-Join the growing community of users managing their automation environments with PowerShell Universal.
+Join the thriving PowerShell Universal community and connect with like-minded professionals. Participate in our active forum for support and collaboration, explore our open-source gallery of pre-made solutions, and stay informed with our transparent roadmap and bug tracker.
 
 <figure><img src=".gitbook/assets/image (308).png" alt=""><figcaption><p>Community Forums</p></figcaption></figure>
 
 * [Forums](https://forums.ironmansoftware.com/)
 * [Issue Tracker](https://github.com/ironmansoftware/issues)
 
-## Universal Licensing
+## Licensing
 
 Universal is licensed per server. Visit our [website for more information ](https://ironmansoftware.com/powershell-universal/)on pricing.
 
