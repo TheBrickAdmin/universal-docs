@@ -26,15 +26,13 @@ The only contents that you need to provide in the editor are the script you wish
 
 ![API Content](<../.gitbook/assets/image (550).png>)
 
-
-
 {% hint style="warning" %}
-Avoid using endpoint URLs that match internal PowerShell Universal Management API URLs, as this causes unexpected behavior. You can reference the [OpenAPI documentation](openapi.md#management-api-documentation) for the [Management API](../config/management-api.md) to verify that none of the URLs match.&#x20;
+Avoid using endpoint URLs that match internal PowerShell Universal Management API URLs, as this causes unexpected behavior. You can reference the [OpenAPI documentation](openapi.md#management-api-documentation) for the [Management API](../config/management-api.md) to verify that none of the URLs match.
 {% endhint %}
 
 ## HTTP Methods
 
-Endpoints can have one or more HTTP methods defined. To determine which method is used by an endpoint, use the built-in `$Method` variable.&#x20;
+Endpoints can have one or more HTTP methods defined. To determine which method is used by an endpoint, use the built-in `$Method` variable.
 
 ```powershell
 New-PSUEndpoint -Url '/user' -Method @('GET', 'POST') -Endpoint {
@@ -78,6 +76,12 @@ The resulting `Invoke-RestMethod` call must then include the query string parame
 
 ```powershell
 Invoke-RestMethod http://localhost:5000/user?Id=123
+```
+
+When using multiple query string parameters, ensure that your URL is surrounded by quotes so PowerShell translates it properly. Including an ampersand (&) without quotes will cause issues in both Windows PowerShell and PowerShell 7.
+
+```powershell
+Invoke-RestMethod "http://localhost:5000/user?Id=123&name=tim"
 ```
 
 ### Security Considerations
@@ -220,9 +224,9 @@ New-PSUEndpoint -Url '/user/:name' -Endpoint {
 }
 ```
 
-When using the `param` block with route parameters like the above example, you must include the route variable in your parameter. If it is not specified, you will not have access to that value.&#x20;
+When using the `param` block with route parameters like the above example, you must include the route variable in your parameter. If it is not specified, you will not have access to that value.
 
-For example, the following `$Name` variable is always `$null`. The endpoint always returns false.&#x20;
+For example, the following `$Name` variable is always `$null`. The endpoint always returns false.
 
 ```powershell
 New-PSUEndpoint -Url '/user/:name' -Endpoint {
@@ -401,12 +405,13 @@ Once you have defined your C# endpoint file, you can add it by editing `endpoint
 ```powershell
 New-PSUEndpoint -Url /csharp -Path endpoint.cs -Environment 'C#'
 ```
-The PowerShell Universal service automatically compiles and runs C# endpoints. 
+
+The PowerShell Universal service automatically compiles and runs C# endpoints.
 
 ## API
 
-* [New-PSUEndpoint](https://github.com/ironmansoftware/universal-docs/blob/v5/cmdlets/New-PSUEndpoint.txt)
-* [Get-PSUEndpoint](https://github.com/ironmansoftware/universal-docs/blob/v5/cmdlets/Get-PSUEndpoint.txt)
-* [Remove-PSUEndpoint](https://github.com/ironmansoftware/universal-docs/blob/v5/cmdlets/Remove-PSUEndpoint.txt)
-* [New-PSUApiResponse](https://github.com/ironmansoftware/universal-docs/blob/v5/cmdlets/New-PSUApiResponse.txt)
-* [Set-PSUSetting](https://github.com/ironmansoftware/universal-docs/blob/v5/cmdlets/Set-PSUSetting.txt)
+* [New-PSUEndpoint](../cmdlets/New-PSUEndpoint.txt)
+* [Get-PSUEndpoint](../cmdlets/Get-PSUEndpoint.txt)
+* [Remove-PSUEndpoint](../cmdlets/Remove-PSUEndpoint.txt)
+* [New-PSUApiResponse](../cmdlets/New-PSUApiResponse.txt)
+* [Set-PSUSetting](../cmdlets/Set-PSUSetting.txt)
