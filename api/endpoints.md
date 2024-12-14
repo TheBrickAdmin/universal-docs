@@ -317,7 +317,13 @@ New-PSUEndpoint -Url '/file' -Method Get -Endpoint {
 }
 ```
 
-##
+You can control the response headers with a hashtable of values that you pass to the `-Headers`parameter.&#x20;
+
+```powershell
+New-PSUApiResponse -StatusCode 200 -Headers @{
+    "Referrer-Policy" = "no-referrer"
+}
+```
 
 ## Persistent Runspaces
 
