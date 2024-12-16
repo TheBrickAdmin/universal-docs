@@ -4,6 +4,32 @@ description: Changelog for PowerShell Universal.
 
 # Changelog
 
+## 5.1.1 - 12/16/2024
+
+### Bug Fixes
+
+#### Admin Console
+
+* Fixed an issue with the log view not loading properly (#4129)
+* Fixed an issue with Code Editor crashing (#4131)
+* Fixed an issue with inconsistent and slow IntelliSense
+
+#### Apps
+
+* Fixed an issue with New-UDEndpoint -Schedule (#4130)
+
+#### Agents
+
+* Fixed an issue with agent reconnection (#4126)
+
+#### Cmdlets
+
+* Fixed an issue with Get-PSUCache -List (#4124)
+
+#### Platform
+
+* Fixed an issue groom idle terminal instances (#4138)
+
 ## 5.1.0 - 12/11/2024
 
 ### Features
