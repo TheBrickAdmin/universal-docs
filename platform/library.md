@@ -1,24 +1,24 @@
 ---
-description: The Universal Library of scripts, widgets, triggers and more.
+description: The PowerShell Universal Gallery of scripts, widgets, triggers and more.
 ---
 
-# Library
+# Gallery
 
-The Universal Library is a collection of pre-built solutions for PowerShell Universal. It includes resources such as scripts, triggers, apps, and widgets.&#x20;
+The Gallery is a collection of pre-built solutions for PowerShell Universal. It includes resources such as scripts, triggers, apps, and widgets.
 
-The [library ](https://github.com/ironmansoftware/scripts/issues)is open-source, and each release of PowerShell Universal includes a copy that is downloaded during the build process. The library is registered as a PowerShell Module Repository in PowerShell Universal. It consists of a folder of `.nupkg` files for each module.&#x20;
+The Gallery[ ](https://github.com/ironmansoftware/scripts/issues)is open-source, and each release of PowerShell Universal includes a copy that is downloaded during the build process. The library is registered as a PowerShell Module Repository in PowerShell Universal. It consists of a folder of `.nupkg` files for each module.&#x20;
 
-## Installing and Updating the Library
+## Installing and Updating the Gallery
 
-Navigate to the Library page on Platform \ Library and click Install Library to install the latest version of the library. It will download a ZIP file from GitHub, extract it locally and register the folder as a PowerShell Module Repository.
+Navigate to the Library page on Platform \ Gallery and click Install Gallery to install the latest version of the library. It will download a ZIP file from GitHub, extract it locally and register the folder as a PowerShell Module Repository.
 
-## Installing Resources from the Library
+## Installing Resources from the Gallery
 
-To install resources from the library, click Platform \ Library in the Universal Admin Console. Click the Install icon to save the resource into your environment. Each solution is a PowerShell module that will be included in your Repository's module directory.&#x20;
+To install resources from the library, click Platform \ Gallery in the Universal Admin Console. Click the Install icon to save the resource into your environment. Each solution is a PowerShell module that will be included in your Repository's module directory.&#x20;
 
-<figure><img src="../.gitbook/assets/image (10).png" alt=""><figcaption><p>Universal Library Catalog</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (65).png" alt=""><figcaption><p>Modules in the Gallery</p></figcaption></figure>
 
-Resources installed from modules, like from the Library, are marked as read-only in the Admin Console.&#x20;
+Resources installed from modules, like from the Gallery, are marked as read-only in the Admin Console.&#x20;
 
 <figure><img src="../.gitbook/assets/image (1) (1) (1) (1) (1).png" alt=""><figcaption><p>Read-Only Resource in the Admin Console</p></figcaption></figure>
 
@@ -30,6 +30,6 @@ Clicking the Delete icon will remove the module and any resources associated wit
 
 <figure><img src="../.gitbook/assets/image (2) (1) (1) (1).png" alt=""><figcaption><p>Repository Modules</p></figcaption></figure>
 
-## Contributing to the Library
+## Contributing to the Gallery
 
-You can contribute your own scripts to the Universal Library. We accept pull requests on the[ Library GitHub repository](https://github.com/ironmansoftware/scripts).&#x20;
+You can contribute your own scripts to the PowerShell Universal Gallery. We accept pull requests on the[ Gallery GitHub repository](https://github.com/ironmansoftware/scripts).&#x20;
