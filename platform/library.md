@@ -8,11 +8,30 @@ The Gallery is a collection of pre-built solutions for PowerShell Universal. It 
 
 The Gallery[ ](https://github.com/ironmansoftware/scripts/issues)is open-source, and each release of PowerShell Universal includes a copy that is downloaded during the build process. The library is registered as a PowerShell Module Repository in PowerShell Universal. It consists of a folder of `.nupkg` files for each module.&#x20;
 
-## Installing and Updating the Gallery
+## Registering the Gallery as a Resource Repository
 
-Navigate to the Library page on Platform \ Gallery and click Install Gallery to install the latest version of the library. It will download a ZIP file from GitHub, extract it locally and register the folder as a PowerShell Module Repository.
+The Gallery provides a NuGet feed that you can register with PowerShell Resource Get. This feed is automatically registered in PowerShell Universal. Once register, you can use commands like `Save-PSResource`to download and install modules for PowerShell Universal
+
+```powershell
+Install-Module -Name Microsoft.PowerShell.PSResourceGet -Force -SkipPublisherCheck -AllowClobber -Scope CurrentUser -ErrorAction SilentlyContinue
+Register-PSRepository -Name 'PSUGallery' -SourceLocation 'https://gallery.powershelluniversal.com/feed/index.json'
+```
+
+## Installing the Gallery Locally
+
+Navigate to the Gallery page on Platform \ Gallery and click Install Gallery to install the latest version of the library. It will download a ZIP file from GitHub, extract it locally and register the folder as a PowerShell Module Repository.
 
 ## Installing Resources from the Gallery
+
+### Module Page
+
+On the module page, click Galleries, and then select the PSUGallery to search and download resources directly from the PowerShell Universal Gallery feed.
+
+
+
+### Gallery Page
+
+The Gallery page uses the locally installed version of the Gallery to allow you to install resources into your current configuration.&#x20;
 
 To install resources from the library, click Platform \ Gallery in the Universal Admin Console. Click the Install icon to save the resource into your environment. Each solution is a PowerShell module that will be included in your Repository's module directory.&#x20;
 
