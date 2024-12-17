@@ -6,7 +6,7 @@ description: Changelog for PowerShell Universal.
 
 ## 5.1.1 - 12/16/2024
 
-### Bug Fixes
+#### Bug Fixes
 
 #### Admin Console
 
@@ -32,7 +32,7 @@ description: Changelog for PowerShell Universal.
 
 ## 5.1.0 - 12/11/2024
 
-### Features
+#### Features
 
 #### Admin Console
 
@@ -76,7 +76,7 @@ description: Changelog for PowerShell Universal.
 * Added psu.exe git command line tools
 * Added psu.exe db migration command line tools
 
-### Bug Fixes
+#### Bug Fixes
 
 #### Admin Console
 
