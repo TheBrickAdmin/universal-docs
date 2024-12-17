@@ -4,6 +4,14 @@ description: Changelog for PowerShell Universal.
 
 # Changelog
 
+## 5.1.2 - 12/17/2024
+
+#### Bug Fixes
+
+Automation
+
+* Fixed a performance issue retrieving jobs and data consistency issue when running jobs in parallel.
+
 ## 5.1.1 - 12/16/2024
 
 #### Bug Fixes
