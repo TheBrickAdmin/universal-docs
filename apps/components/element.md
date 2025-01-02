@@ -140,14 +140,49 @@ New-UDButton -Text 'Click Me' -OnClick {
 }
 ```
 
+## Example: Color Picker
+
+Create a color picker with an OnChange event handler using New-UDElement.
+
+<figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption><p>Color Picker</p></figcaption></figure>
+
+```powershell
+function New-UDColorPicker {
+    [CmdletBinding()]
+    param(
+        [Parameter()]
+        [string]$Id = [Guid]::NewGuid(),
+        [Parameter()]
+        [ScriptBlock]$OnChange,
+        [Parameter()]
+        [string]$Value,
+        [Parameter()]
+        [Hashtable]$Style
+    )
+
+    New-UDElement -Id $Id -Tag "input" -Attributes @{
+        value = $Value
+        type = "color"
+        onChange = $OnChange
+        style = $Style
+    }
+}
+
+New-UDApp -Content { 
+    New-UDColorPicker -Id 'colorPicker' -OnChange {
+        Show-UDToast $EventData -Position topLeft -Persistent
+    }
+}
+```
+
 ## API
 
-* [**Get-UDElement**](https://github.com/ironmansoftware/universal-docs/blob/v5/cmdlets/Get-UDElement.txt)\*\*\*\*
-* [**Set-UDElement**](https://github.com/ironmansoftware/universal-docs/blob/v5/cmdlets/Set-UDElement.txt)
-* [**Remove-UDElement**](https://github.com/ironmansoftware/universal-docs/blob/v5/cmdlets/Remove-UDElement.txt)
-* [**Add-UDElement**](https://github.com/ironmansoftware/universal-docs/blob/v5/cmdlets/Add-UDElement.txt)
-* [**Clear-UDElement**](https://github.com/ironmansoftware/universal-docs/blob/v5/cmdlets/Clear-UDElement.txt)
-* [**Sync-UDElement**](https://github.com/ironmansoftware/universal-docs/blob/v5/cmdlets/Sync-UDElement.txt)
-* \*\*\*\*[**Select-UDElement**](https://github.com/ironmansoftware/universal-docs/blob/v5/cmdlets/Select-UDElement.txt)
+* [**Get-UDElement**](../../cmdlets/Get-UDElement.txt)
+* [**Set-UDElement**](../../cmdlets/Set-UDElement.txt)
+* [**Remove-UDElement**](../../cmdlets/Remove-UDElement.txt)
+* [**Add-UDElement**](../../cmdlets/Add-UDElement.txt)
+* [**Clear-UDElement**](../../cmdlets/Clear-UDElement.txt)
+* [**Sync-UDElement**](../../cmdlets/Sync-UDElement.txt)
+* [**Select-UDElement**](../../cmdlets/Select-UDElement.txt)
 
 ***

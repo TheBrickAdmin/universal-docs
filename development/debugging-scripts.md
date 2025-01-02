@@ -30,11 +30,11 @@ For example, assume you have a script with a `Wait-Debugger` call included. The 
 
 Once a script is paused, you will see a terminal for debugging the script.
 
-<figure><img src="../.gitbook/assets/image (1) (1).png" alt=""><figcaption><p>Debugger Terminal</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1) (1).png" alt=""><figcaption><p>Debugger Terminal</p></figcaption></figure>
 
 You can then use the built in debugging commands to step through the script.&#x20;
 
-<figure><img src="../.gitbook/assets/image (1) (1) (1).png" alt=""><figcaption><p>Debugging Commands</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1) (1) (1).png" alt=""><figcaption><p>Debugging Commands</p></figcaption></figure>
 
 ### Apps
 
@@ -153,7 +153,7 @@ Once you have attached to the process, you will now want to find the runspace wh
 
 Now that you found your runspace, use `Debug-Runspace` to attached to the runspace. You will now have the opportunity to issue debugging commands against that runspace. You can view the status of variables, issue commands and even step through the script.
 
-For a full list of debugging commands, you can see the [Microsoft documentation here](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about\_debuggers?view=powershell-7#starting-and-stopping-the-debugger).
+For a full list of debugging commands, you can see the [Microsoft documentation here](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_debuggers?view=powershell-7#starting-and-stopping-the-debugger).
 
 ### Example of Connecting to API Process
 
