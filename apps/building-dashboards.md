@@ -68,7 +68,7 @@ New-UDPage -Content {
 }
 ```
 
-Learn more about [components here](building-dashboards.md#components).
+Learn more about [components here](components).
 
 ## Pages
 
