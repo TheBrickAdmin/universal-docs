@@ -180,7 +180,7 @@
 * [Management API](config/management-api.md)
 * [Module](config/module.md)
 * [Persistence](config/persistence.md)
-* [psucli](config/psucli.md)
+* [psu Command Line Tool](config/psucli.md)
 * [Repository](config/repository.md)
 * [Running as a Service Account](config/running-as-a-service-account.md)
 
