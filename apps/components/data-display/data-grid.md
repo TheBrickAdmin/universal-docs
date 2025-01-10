@@ -302,7 +302,7 @@ New-UDApp -Content {
 ) -AutoHeight $true -Pagination -CheckboxSelection -CheckboxSelectionVisibleOnly -DisableRowSelectionOnClick
 ```
 
-You can access selected data with the `-OnSelectionChange` event handler or by retrieving the row data via `Get-UDElement`.&#x20;
+You can access selected data with the `-OnSelectionChange` event handler or by retrieving the row IDs via `Get-UDElement`.&#x20;
 
 ```powershell
 New-UDButton -Text 'Get Selected Rows' -OnClick {
