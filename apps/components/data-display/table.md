@@ -134,7 +134,7 @@ New-UDTable -Id 'customColumnsTable' -Data $Data -Columns $Columns -ShowFilter
 
 ### Static Options for Select Filters
 
-When using server-side processing, the available filters may not display the full range of options since the select dropdown only has access to the current page of results. To avoid this, you can use the `-Options` parameter on `New-UDTableColumn`.&#x20;
+When using server-side processing, the available filters may not display the full range of options since the select dropdown only has access to the current page of results. To avoid this, you can use the `-Options` parameter on `New-UDTableColumn`.
 
 ```powershell
 New-UDTableColumn -Property Dessert -Title 'Dessert' -Filter -FilterType 'Select' -Options @('Frozen yoghurt', 'Eclair', 'Cupcake')
@@ -186,16 +186,16 @@ Process data on the server so you can perform paging, filtering, sorting and sea
 
 The `$EventData` object contains the following properties.
 
-| Property Name  | Type                                                                                         | Description                                                                 |
-| -------------- | -------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
-| Filters        | <p>Hashtable[]<br><br>@{ <br>    id = 'fieldName'</p><p>    value = 'filterValue'<br> } </p> | A list of filter values. Each hashtable has an `Id` and a `Value` property. |
-| OrderBy        | <p>Hashtable<br><br>@{ field = "fieldName" }</p>                                             | Property name to sort by.                                                   |
-| OrderDirection | string                                                                                       | `asc` or `desc` depending on the sort order.                                |
-| Page           | int                                                                                          | The current page (starting with 0).                                         |
-| PageSize       | int                                                                                          | The selected page size.                                                     |
-| Properties     | string\[]                                                                                    | An array of properties being shown in the table.                            |
-| Search         | string                                                                                       | A search string provided by the user.                                       |
-| TotalCount     | int                                                                                          | The total number of records before filtering or paging.                     |
+| Property Name  | Type                                                                              | Description                                                                 |
+| -------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| Filters        | <p>Hashtable[]<br><br>@{<br>id = 'fieldName'</p><p>value = 'filterValue'<br>}</p> | A list of filter values. Each hashtable has an `Id` and a `Value` property. |
+| OrderBy        | <p>Hashtable<br><br>@{ field = "fieldName" }</p>                                  | Property name to sort by.                                                   |
+| OrderDirection | string                                                                            | `asc` or `desc` depending on the sort order.                                |
+| Page           | int                                                                               | The current page (starting with 0).                                         |
+| PageSize       | int                                                                               | The selected page size.                                                     |
+| Properties     | string\[]                                                                         | An array of properties being shown in the table.                            |
+| Search         | string                                                                            | A search string provided by the user.                                       |
+| TotalCount     | int                                                                               | The total number of records before filtering or paging.                     |
 
 ### Example
 
@@ -307,12 +307,11 @@ By default, the page size selector provides an option to show all rows. If you w
 
 You can change the location of the pagination control by using the `-PaginationLocation` parameter. It accepts top, bottom and both.
 
-![Pagination Location
-](<../../../.gitbook/assets/image (77).png>)
+![Pagination Location](<../../../.gitbook/assets/image (77).png>)
 
 ### Page Sizes
 
-The page size, by default, is set to 5. Users can adjust the number of rows per page by using the Rows per page drop down. You can adjust the default page size by using the `-PageSize` parameter. To adjust the values available within the Rows per page drop down, you can use an array of integers pass to the `-PageSizeOptions` parameter.&#x20;
+The page size, by default, is set to 5. Users can adjust the number of rows per page by using the Rows per page drop down. You can adjust the default page size by using the `-PageSize` parameter. To adjust the values available within the Rows per page drop down, you can use an array of integers pass to the `-PageSizeOptions` parameter.
 
 ```powershell
 $Data = @(
@@ -379,6 +378,8 @@ New-UDTable -Data $Data -ShowSort -DisableSortRemove
 
 ## Selection
 
+### Static Table Data
+
 Tables support selection of rows. You can create an event handler for the `OnRowSelected` parameter to receive when a new row is selected or unselected or you can use `Get-UDElement` to retrieve the current set of selected rows.
 
 The following example creates a table with row selection enabled. A toast is show when clicking the row or when clicking the GET Rows button.
@@ -418,9 +419,13 @@ For example, the service table data would look like this.
 }
 ```
 
+### Dynamic (Server-Side) Tables
+
+When using selection and `-LoadData`, the `-OnRowSelected $EventData` will be the IDs of the rows and not the entire row data. It will still indicate where the row has been selected or de-selected.&#x20;
+
 ## Collapsible Rows
 
-You can include additional information within the table by using the `-OnRowExpand` parameter of `New-UDTable`. It accepts a ScriptBlock that you can use to return additional components.&#x20;
+You can include additional information within the table by using the `-OnRowExpand` parameter of `New-UDTable`. It accepts a ScriptBlock that you can use to return additional components.
 
 ```powershell
 New-UDTable -Data (Get-Service) -OnRowExpand {
@@ -590,7 +595,7 @@ New-UDButton -Text 'Get Data' -OnClick {
 
 ### LoadData Parameter
 
-If you use the `-LoadData` parameter, you can sync the table directly. This has the benefit of maintaining the table state, such as the page and filtering, after the refresh.&#x20;
+If you use the `-LoadData` parameter, you can sync the table directly. This has the benefit of maintaining the table state, such as the page and filtering, after the refresh.
 
 ```powershell
 New-UDButton -Text 'Table1' -OnClick { Sync-UDElement -Id 'Table1' }
@@ -666,7 +671,7 @@ New-UDTable -ShowRefresh -Columns $Columns -LoadData {
 
 ## Alternating Row Colors
 
-You can use a theme to create a table with alternating row colors.&#x20;
+You can use a theme to create a table with alternating row colors.
 
 <figure><img src="../../../.gitbook/assets/image (521).png" alt=""><figcaption></figcaption></figure>
 
@@ -696,7 +701,7 @@ $data = 1..10 | % { [PSCustomObject]@{ Item = $_}}
 
 ## API
 
-* [New-UDTable](https://github.com/ironmansoftware/universal-docs/blob/v5/cmdlets/New-UDTable.txt)
-* [New-UDTableColumn](https://github.com/ironmansoftware/universal-docs/blob/v5/cmdlets/New-UDTableColumn.txt)
-* [Out-UDTableColumn](https://github.com/ironmansoftware/universal-docs/blob/v5/cmdlets/Out-UDTableData.txt)
-* [New-UDTableTextOption](https://github.com/ironmansoftware/universal-docs/blob/v5/cmdlets/New-UDTableTextOption.txt)
+* [New-UDTable](../../../cmdlets/New-UDTable.txt)
+* [New-UDTableColumn](../../../cmdlets/New-UDTableColumn.txt)
+* [Out-UDTableColumn](../../../cmdlets/Out-UDTableData.txt)
+* [New-UDTableTextOption](../../../cmdlets/New-UDTableTextOption.txt)
