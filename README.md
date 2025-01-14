@@ -99,8 +99,6 @@ PowerShell Universal delivers a seamless development experience with built-in to
 * [Management API](https://docs.powershelluniversal.com/config/management-api)
 * [Visual Studio Code Extension](https://docs.powershelluniversal.com/visual-studio-code-extension)
 * [Performance Profiler](https://docs.powershelluniversal.com/debugging/profiling)
-* [Desktop Mode](https://docs.powershelluniversal.com/platform/desktop-mode)
-* [Hotkeys](https://docs.powershelluniversal.com/platform/desktop-mode/hotkeys)
 
 ## Platform
 
