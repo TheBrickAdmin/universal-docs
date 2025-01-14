@@ -502,6 +502,8 @@ New-UDNivoChart -Line -Data $Data -Height 500 -Width 1000 -LineWidth 1
 
 #### Network
 
+<figure><img src="../../../.gitbook/assets/image (66).png" alt=""><figcaption><p>Network Chart</p></figcaption></figure>
+
 Assuming the below JSON data, you can use the following app code.
 
 ```json
