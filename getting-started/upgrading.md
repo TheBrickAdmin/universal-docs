@@ -16,7 +16,7 @@ The Universal application binaries can generally be upgraded without having to c
 
 ## Recommendations
 
-For production environments, we recommend deploying PowerShell Universal to a staging or development environment prior to major upgrades. This allows for testing before end users are affected. You can use [Development Licenses ](../licensing.md#developer-licenses)to test changes in PowerShell Universal instances without purchasing another license.&#x20;
+For production environments, we recommend deploying PowerShell Universal to a staging or development environment prior to major upgrades. This allows for testing before end users are affected. You can use [Development Licenses ](../licensing.md#developer-licenses)to test changes in PowerShell Universal instances without purchasing another license.
 
 ## 1. Data Backup
 
@@ -60,10 +60,10 @@ If you perform an uninstall and then an install using the MSI, then the service 
 
 #### Upgrade Process
 
-Once all the configuration files and the database are backed up, you can run the new MSI installer.&#x20;
+Once all the configuration files and the database are backed up, you can run the new MSI installer.
 
 {% hint style="warning" %}
-For major upgrades (e.g. v4.3.4 to v5.0.4 etc), you will need to uninstall the previous version prior to running the new version.&#x20;
+For major upgrades (e.g. v4.3.4 to v5.0.4 etc), you will need to uninstall the previous version prior to running the new version.
 {% endhint %}
 
 The installer may prompt for a restart of the machine if files are locked. The PSU MSI will uninstall all the files in the installation directory and install entirely new files.
@@ -179,21 +179,21 @@ Additionally, you may encounter issues due to the PSU service restart. When the 
 
 ### Removal of Pages
 
-The drag and drop page designer has been removed in favor of [Portal Pages](../portal/portal-pages.md) and [Widgets](../portal/portal-widgets/).&#x20;
+The drag and drop page designer has been removed in favor of [Portal Pages](../portal/portal-pages.md) and [Widgets](../portal/portal-widgets/).
 
 ### Removal of App Pages Designer
 
-The drag and drop page designer for apps has been removed. Apps created with the designer will still function.&#x20;
+The drag and drop page designer for apps has been removed. Apps created with the designer will still function.
 
 ### Removal of Access Controls
 
-Access Controls have been removed in favor of [Permissions](../security/enterprise-security/permissions.md). You can also use the [Portal ](broken-reference)to assign resources, like scripts, to users without the need for complicated permissions.&#x20;
+Access Controls have been removed in favor of [Permissions](../security/enterprise-security/permissions.md). You can also use the [Portal ](broken-reference/)to assign resources, like scripts, to users without the need for complicated permissions.
 
 ### Cmdlet Communication Channel and Authorization Changes
 
-Prior to v5, cmdlets would send data over HTTP or by using an internal gRPC channel. Now, all cmdlets use an externally facing gRPC Channel that is protected by authentication and authorization. It no longer uses standard REST API HTTP calls.&#x20;
+Prior to v5, cmdlets would send data over HTTP or by using an internal gRPC channel. Now, all cmdlets use an externally facing gRPC Channel that is protected by authentication and authorization. It no longer uses standard REST API HTTP calls.
 
-This can be a problem for PowerShell Universal instances behind [reverse proxies](../config/hosting/reverse-proxy.md) and requires that the proper header values are sent.&#x20;
+This can be a problem for PowerShell Universal instances behind [reverse proxies](../config/hosting/reverse-proxy.md) and requires that the proper header values are sent.
 
 Please review the [Module ](../config/module.md)documentation for more information.
 
@@ -201,13 +201,13 @@ Please review the [Module ](../config/module.md)documentation for more informati
 
 #### HTTP Status Code 403
 
-The cmdlet you are calling does not have access to the PowerShell Universal APIs. You will need to specify an -AppToken parameter on the cmdlets in order to use them.&#x20;
+The cmdlet you are calling does not have access to the PowerShell Universal APIs. You will need to specify an -AppToken parameter on the cmdlets in order to use them.
 
-You can also enable the [permissive API security model](../config/module.md#authorization-security-model) to allow internally called cmdlets from PowerShell Universal without the need for authorization.&#x20;
+You can also enable the [permissive API security model](../config/module.md#authorization-security-model) to allow internally called cmdlets from PowerShell Universal without the need for authorization.
 
 #### URI Not Defined
 
-The cmdlets are unable to determine how to call the PowerShell Universal APIs. You will need to either specify a -ComputerName parameter or setup the API URL in appsettings.json.&#x20;
+The cmdlets are unable to determine how to call the PowerShell Universal APIs. You will need to either specify a -ComputerName parameter or setup the API URL in appsettings.json.
 
 ```json
 {
@@ -219,19 +219,19 @@ The cmdlets are unable to determine how to call the PowerShell Universal APIs. Y
 
 #### SSL Certificate Error
 
-If you are using a self-signed certificate, you will need to specify the -TrustCertificate parameter of the cmdlets.&#x20;
+If you are using a self-signed certificate, you will need to specify the -TrustCertificate parameter of the cmdlets.
 
 ### PowerShell.exe is no longer used
 
-The Windows PowerShell 5.1 environment no longer uses PowerShell.exe directly. It instead uses a .NET Framework version of the Universal.Agent.exe executable. This allows for the greatest compatibility with PowerShell Universal libraries and other modules. The agent still uses the PowerShell assemblies found on the executing machine.&#x20;
+The Windows PowerShell 5.1 environment no longer uses PowerShell.exe directly. It instead uses a .NET Framework version of the Universal.Agent.exe executable. This allows for the greatest compatibility with PowerShell Universal libraries and other modules. The agent still uses the PowerShell assemblies found on the executing machine.
 
 PowerShell.exe is no longer supported. It can be used in minimal environments.
 
 ### PowerShell 7 Environment No longer Uses Pwsh.exe
 
-The default PowerShell 7 environment uses a .NET version of Universal.Agent.exe executable running PowerShell 7.4. This allows for the greatest compatibility with PowerShell Universal libraries and other modules.&#x20;
+The default PowerShell 7 environment uses a .NET version of Universal.Agent.exe executable running PowerShell 7.4. This allows for the greatest compatibility with PowerShell Universal libraries and other modules.
 
-It's still possible to use the pwsh.exe process in custom environment configurations.&#x20;
+It's still possible to use the pwsh.exe process in custom environment configurations.
 
 ### IIS Hosting Package
 
@@ -247,19 +247,19 @@ SQLite is the default persistence method. You will need to perform a manual conv
 
 ### LiteDB Support Removed
 
-LiteDB has been removed as a supported database engine. Included with the PowerShell Universal installation files, you will find `psudb.exe`. It can be used to convert a LiteDB database into a SQLite database. Use the following command line.&#x20;
+LiteDB has been removed as a supported database engine. Included with the PowerShell Universal installation files, you will find `psudb.exe`. It can be used to convert a LiteDB database into a SQLite database. Use the following command line.
 
 ```powershell
-.\psudb.exe -Path "$ENV:ProgramData\UniversalAutomation\database.db"
+.\psudb.exe --Path "$ENV:ProgramData\UniversalAutomation\database.db"
 ```
 
-The tool will create a `database.bak` file before performing the conversion. Progress will be reported in the console.&#x20;
+The tool will create a `database.bak` file before performing the conversion. Progress will be reported in the console.
 
 #### Converting a Database for a MSI Upgrade
 
-In order for the PowerShell Universal installer to run successfully, you will need to update the database before running the MSI installer. Below are the steps to take to do so.&#x20;
+In order for the PowerShell Universal installer to run successfully, you will need to update the database before running the MSI installer. Below are the steps to take to do so.
 
-1. Download the ZIP package for Windows and extract to a local directory.&#x20;
+1. Download the ZIP package for Windows and extract to a local directory.
 2. Stop the PowerShell Universal service
 3. Run the psudb.exe command from the ZIP directory, as stated above, to convert the database file in %ProgramData%\UniversalAutomation
 4. Update the %ProgramData%\PowerShellUniversal\appsettings.json file to use the SQLite plugin rather than the LiteDB plugin
@@ -271,14 +271,14 @@ Desktop mode has been removed. Resources such as hot keys, file associations and
 
 ### Install-PSUServer on Windows Installs from the MSI
 
-In previous versions of PowerShell Universal, this command would install to a directory and create the service manually. This command now installs from MSI. If you previously installed with this module, you will need to remove the existing install with a previous version of the module and then install with the new version of the module.&#x20;
+In previous versions of PowerShell Universal, this command would install to a directory and create the service manually. This command now installs from MSI. If you previously installed with this module, you will need to remove the existing install with a previous version of the module and then install with the new version of the module.
 
 ```powershell
 Install-Module Universal -RequiredVersion 4.4.0
 Remove-PSUServer
 ```
 
-Open a new command prompt and run the following.&#x20;
+Open a new command prompt and run the following.
 
 ```powershell
 Uninstall-Module Universal
@@ -288,8 +288,8 @@ Install-PSUServer
 
 ### Git Database Storage Removed
 
-PowerShell Universal no longer supports storing the git repository directly in the database. We recommend using a remote git provider like GitHub, GitLab, or Gitea. PowerShell Universal v5 does support local git repositories without the need to sync to a remote. This allows for storing file history directly on the PowerShell Universal server.&#x20;
+PowerShell Universal no longer supports storing the git repository directly in the database. We recommend using a remote git provider like GitHub, GitLab, or Gitea. PowerShell Universal v5 does support local git repositories without the need to sync to a remote. This allows for storing file history directly on the PowerShell Universal server.
 
 ### Removed Heatmap and Marker Cluster from New-UDMap
 
-Maps no longer support heatmaps or marker clusters.&#x20;
+Maps no longer support heatmaps or marker clusters.
