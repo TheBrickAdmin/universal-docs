@@ -24,9 +24,23 @@ Each website running PowerShell Universal will need a license and not a single l
 
 To install a license, click Settings \ License. Click the Add License button to upload your license file. You can also install licenses using the `Set-PSULicense` cmdlet. Offline licenses do not require an internet connection but will need to be reinstalled when the subscription expires, in you wish to update the version of PowerShell Universal. Online licenses require an internet connection and access to `https://ironmansoftware.com` in order to verify subscription status.
 
-You can use the `PSULICENSE` environment variable to set a license. The value of this environment variable needs to be the contents of the license file.&#x20;
+You can use the `PSULICENSE` environment variable to set a license. The value of this environment variable needs to be the contents of the license file.
 
 Proxy configuration can be done by clicking Settings \ General and configuring the proxy URI and, optionally, credentials. You can also configure proxy settings with the `Set-PSUSetting` cmdlet.
+
+### Account-Based Licensing
+
+When using account-based licensing, you will enter your account's license key. Whenever you activate a PowerShell Universal server, it will assign a license to computer. This license key does not change so there is no need to install a new license when renewing. You can view the assigned computers in your Ironman Software account.&#x20;
+
+The PowerShell Universal server needs to have access to ironmansoftware.com.&#x20;
+
+### Offline Licenses
+
+Offline license files are required for environments that do not have internet access. You will need to install a new license file when you plan to upgrade to a version past the expiration date of the license.
+
+### Online Licenses
+
+Online licenses work the same as offline but check the subscription status on ironmansoftware.com. The license is tied to a specific subscription and may require a change after renewal. We recommend account-based licensing over online licenses.
 
 ## Developer Licenses
 
