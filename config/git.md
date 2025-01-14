@@ -12,7 +12,7 @@ PowerShell Universal is capable of synchronizing the configuration scripts with 
 
 ## Configuration
 
-### Admin Console&#x20;
+### Admin Console
 
 Git sync can be configured in the database by adjusting the settings within the admin console. This is the preferred approach. The benefit is that when you connect new instances of PowerShell Universal to your SQL instance, you will not need to configure git sync again.
 
@@ -34,7 +34,7 @@ By default, PowerShell Universal will sync with the `master` branch. If you wish
 
 ### Remote
 
-Remotes are not required. If a remote is not specified, the git repository is stored locally in the Repository directory. If specified, PowerShell Universal will sync with the remote. Proper credentials are required for access to that remote.&#x20;
+Remotes are not required. If a remote is not specified, the git repository is stored locally in the Repository directory. If specified, PowerShell Universal will sync with the remote. Proper credentials are required for access to that remote.
 
 ### Authentication
 
@@ -325,63 +325,55 @@ The other issue is that due to the way that PowerShell Universal watches files (
 
 ## Branching Strategies
 
-Branching strategies in git dictate how changes are moved from one branch to another. Utilizing different types of branching strategies in PowerShell Universal can ensure that teams of different sizes can work effectively together in the platform.&#x20;
+Branching strategies in git dictate how changes are moved from one branch to another. Utilizing different types of branching strategies in PowerShell Universal can ensure that teams of different sizes can work effectively together in the platform.
 
 ### Single Users and Small Teams
 
-For single users and small teams, it may not be necessary to have more than a single branch. The branch is used for history tracking and provides the ability to roll back changes. Users will access PowerShell Universal directly to make changes or commit changes to the single branch from local clones of the repository directory using a tool like VS Code.&#x20;
+For single users and small teams, it may not be necessary to have more than a single branch. The branch is used for history tracking and provides the ability to roll back changes. Users will access PowerShell Universal directly to make changes or commit changes to the single branch from local clones of the repository directory using a tool like VS Code.
 
 * main - Single branch that accepts all changes directly
 
 ### Single Users and Smalls Teams with a Staging Branch
 
-Even single users and small teams may find it advantageous to employ a staging, or dev, branch. This branch will receive changes during development. A standalone instance of PowerShell Universal will be configured to run against this dev branch so that users can validate changes before pushing to production.&#x20;
+Even single users and small teams may find it advantageous to employ a staging, or dev, branch. This branch will receive changes during development. A standalone instance of PowerShell Universal will be configured to run against this dev branch so that users can validate changes before pushing to production.
 
 When using a staging branch configuration, the PowerShell Universal environments are completely separate. They use a different database and scheduler. Data such as identities, app tokens and job history are not shared across the environments.
 
 {% hint style="info" %}
-Each instance of PowerShell Universal requires a [license](../licensing.md). In this configuration, two licenses would be required.&#x20;
+Each instance of PowerShell Universal requires a [license](../licensing.md). In this configuration, two licenses would be required.
 {% endhint %}
 
-A separate PowerShell Universal instance can then be configured to point to a main, or production, branch that will receive updates via merges or Pull Requests in a system like GitHub. In this configuration, it is possible to use one-way git sync to pull changes from main but never push from the platform. This also prevents most merge conflicts as they will be addressed in the dev branch or via the merge tool in the source repository.&#x20;
+A separate PowerShell Universal instance can then be configured to point to a main, or production, branch that will receive updates via merges or Pull Requests in a system like GitHub. In this configuration, it is possible to use one-way git sync to pull changes from main but never push from the platform. This also prevents most merge conflicts as they will be addressed in the dev branch or via the merge tool in the source repository.
 
 * main - Production branch that receives changes from pull requests of the dev branch
-* dev - The staging branch used to accept commits and validate changes before pushing to master.&#x20;
+* dev - The staging branch used to accept commits and validate changes before pushing to master.
 
 ### Medium to Large Size Teams
 
-When considering teams with more than a couple of developers, a more complex branching strategy may be helpful to better evaluate code changes and avoid merge conflicts. PowerShell Universal provides basic merge tools, but better tooling is available for this purpose, such as GitHub pull request, GitLab merge requests and local tools like GitKraken.&#x20;
+When considering teams with more than a couple of developers, a more complex branching strategy may be helpful to better evaluate code changes and avoid merge conflicts. PowerShell Universal provides basic merge tools, but better tooling is available for this purpose, such as GitHub pull request, GitLab merge requests and local tools like GitKraken.
 
-In medium size teams, it may be desirable to have additional feature branches that isolate specific changes to a certain branch. For example, a developer may be creating a new set of APIs to manage Azure in PowerShell Universal. In order to avoid breaking changes in the dev branch, developers will create their own feature branch that contains all their changes until it is complete enough to be merged into the development branch.&#x20;
+In medium size teams, it may be desirable to have additional feature branches that isolate specific changes to a certain branch. For example, a developer may be creating a new set of APIs to manage Azure in PowerShell Universal. In order to avoid breaking changes in the dev branch, developers will create their own feature branch that contains all their changes until it is complete enough to be merged into the development branch.
 
 {% hint style="info" %}
 PowerShell Universal provides [developer licenses](../licensing.md) to avoid having to purchase a license for every developer on your team. Licenses would still be required for the production and staging environments.
 {% endhint %}
 
-In this type of configuration, local development is ideal because the developers will work on their local PowerShell Universal instance within their feature branch. When the feature is complete, they will create a Pull or Merge request in the source repository to move changes into the dev branch. Testing will be completed on the dev branch before merging to production.&#x20;
+In this type of configuration, local development is ideal because the developers will work on their local PowerShell Universal instance within their feature branch. When the feature is complete, they will create a Pull or Merge request in the source repository to move changes into the dev branch. Testing will be completed on the dev branch before merging to production.
 
-Similar to a main\dev branching strategy, all PowerShell Universal instances will be isolated and will not share a database or scheduler.&#x20;
+Similar to a main\dev branching strategy, all PowerShell Universal instances will be isolated and will not share a database or scheduler.
 
-Once a set of features is ready for production, a Pull or Merge request will be made from dev to the main branch.&#x20;
+Once a set of features is ready for production, a Pull or Merge request will be made from dev to the main branch.
 
 * main - Production branch that will only receive changes from dev
 * dev - Staging branch that receives changes from feature branches but is not changed directly
 * feature - Feature branch that is committed to directly by developers and merged to dev when ready
 
+Depending on the complexity of your environment, it may be advised to use Deployments rather than git in production. See the Large Teams section below for more information.
+
 ### Large Teams
 
-In large teams, additional levels of branching may be necessary. Branches for releases or hotfixes may be important to isolate upcoming releases and bug fixes from new feature development. As users develop new features, other developers can be working on patching existing releases or preparing the next release without accepting changes coming in from new feature work. An optional staging branch could also be employed to provide a QA environment that is isolated from development. This would mimic the production environment more closely and avoid accepting changes directly to the branch.&#x20;
+In large teams, we recommend using git for development purposes but use Deployments, or a similar concept, for production.&#x20;
 
-In this configuration, production environments could be pinned to release or hotfix branches. When a new release comes out, PowerShell Universal would have to sync with the new branch. The benefit of such a configuration is the ability to quickly change versions in the event of unintended consequences of changes in the release.&#x20;
+[Deployments ](deployments.md)provide immutable configuration packages that have been well tested in down-level environments. By using Deployments, you can choose how you develop and manage your code and simply publish the result to your development, staging, QA and production environments. This ensures that all code is well tested before deploying to your critical systems.&#x20;
 
-{% hint style="warning" %}
-PowerShell Universal currently has limited support for switching branches on live systems. We recommend switching the branch and restarting the PowerShell Universal service to avoid issues.&#x20;
-{% endhint %}
-
-* main - Main branch that holds the current, ready to release code but may not be run in production directly
-* staging - Quality assurance branch that receives changes from development
-* dev - Development branch that receives changes from feature branches but is not changed directly
-* feature - Feature branch that is committed to directly by developers and merged to dev when ready
-* release - A versioned release branch that contains a set of features and fixes. Created off of the main branch.&#x20;
-* hotfix - A child branch of a release that contains fixes. This could be considered a release branch but is created from a release rather than the main branch.&#x20;
-
+You can use automated workflows, like GitHub Actions, to publish your Deployments without having to manually update any system.
