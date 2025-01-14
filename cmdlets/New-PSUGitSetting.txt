@@ -1,22 +1,22 @@
 
 NAME
-    New-PSUEndpointDocumentation
+    New-PSUGitSetting
     
 SYNOPSIS
-    Creates a new endpoint documentation definition.
+    Creates a new git remote repository configuration.
     
     
 SYNTAX
-    New-PSUEndpointDocumentation [-AppToken <String>] [-Authentication] [-ComputerName <String>] [-Definition <ScriptBlock>] [-Description <String>] [-Integrated] -Name <String> [-Role <String[]>] -Url <String> [-UseDefaultCredentials] [-Credential <PSCredential>] [-TrustCertificate] [-ContactEmail <String>] [-ContactName <String>] [-ContactUrl <String>] [-LicenseName <String>] [-LicenseUrl <String>] [-TermsOfServiceUrl <String>] [-Version <String>] [<CommonParameters>]
+    New-PSUGitSetting [-AppToken <String>] [-Branch <String>] [-ComputerName <String>] [-Credential <PSCredential>] [-ExternalGit] [-GitCredential <PSCredential>] [-Integrated] [-Interval <Int32>] [-Mode {Manual | Automatic}] [-ProxyUrl <String>] [-Remote <String>] [-SyncBehavior {TwoWay | OneWay | PushOnly}] [-TrustCertificate] [-UseDefaultCredentials] [<CommonParameters>]
     
     
 DESCRIPTION
-    Creates a new endpoint documentation definition.
+    Creates a new git remote repository configuration.
     
 
 PARAMETERS
     -AppToken <String>
-        An app token to access the UA API.
+        An app token to access the PSU API.
         
         Required?                    false
         Position?                    named
@@ -24,8 +24,35 @@ PARAMETERS
         Accept pipeline input?       False
         Accept wildcard characters?  false
         
-    -Authentication [<SwitchParameter>]
-        Whether authentication is required to access this documentation definition.
+    -Branch <String>
+        The branch to sync with.
+        
+        Required?                    false
+        Position?                    named
+        Default value                None
+        Accept pipeline input?       False
+        Accept wildcard characters?  false
+        
+    -ComputerName <String>
+        The HTTP address of the PSU REST API server.
+        
+        Required?                    false
+        Position?                    named
+        Default value                None
+        Accept pipeline input?       False
+        Accept wildcard characters?  false
+        
+    -Credential <PSCredential>
+        The credential to use to authenticate with the PSU REST API.
+        
+        Required?                    false
+        Position?                    named
+        Default value                None
+        Accept pipeline input?       False
+        Accept wildcard characters?  false
+        
+    -ExternalGit [<SwitchParameter>]
+        Use an external git client rather than the integrated client.
         
         Required?                    false
         Position?                    named
@@ -33,26 +60,8 @@ PARAMETERS
         Accept pipeline input?       False
         Accept wildcard characters?  false
         
-    -ComputerName <String>
-        The HTTP address of the UA REST API server.
-        
-        Required?                    false
-        Position?                    named
-        Default value                None
-        Accept pipeline input?       False
-        Accept wildcard characters?  false
-        
-    -Definition <ScriptBlock>
-        Classes defined for input and out types for this endpoint documentation.
-        
-        Required?                    false
-        Position?                    named
-        Default value                None
-        Accept pipeline input?       False
-        Accept wildcard characters?  false
-        
-    -Description <String>
-        A description of the documentation.
+    -GitCredential <PSCredential>
+        The credential to use to authenticate with the git repository.
         
         Required?                    false
         Position?                    named
@@ -69,17 +78,8 @@ PARAMETERS
         Accept pipeline input?       False
         Accept wildcard characters?  false
         
-    -Name <String>
-        Name of this documentation definition.
-        
-        Required?                    true
-        Position?                    named
-        Default value                None
-        Accept pipeline input?       False
-        Accept wildcard characters?  false
-        
-    -Role <String[]>
-        Roles allowed to view this documentation.
+    -Interval <Int32>
+        The interval to sync the git repository.
         
         Required?                    false
         Position?                    named
@@ -87,26 +87,35 @@ PARAMETERS
         Accept pipeline input?       False
         Accept wildcard characters?  false
         
-    -Url <String>
-        The URL used to access this documetation.
+    -Mode <GitMode>
+        The edit mode for the git repository in the admin console.
         
-        Required?                    true
+        Required?                    false
         Position?                    named
         Default value                None
         Accept pipeline input?       False
         Accept wildcard characters?  false
         
-    -UseDefaultCredentials [<SwitchParameter>]
-        Use default credentials when connecting to the management API
+    -ProxyUrl <String>
+        The URL of the proxy server to use.
         
         Required?                    false
         Position?                    named
-        Default value                False
+        Default value                None
         Accept pipeline input?       False
         Accept wildcard characters?  false
         
-    -Credential <PSCredential>
-        Credentials to login to the PowerShell Universal Management API.
+    -Remote <String>
+        The URL of the git repository.
+        
+        Required?                    false
+        Position?                    named
+        Default value                None
+        Accept pipeline input?       False
+        Accept wildcard characters?  false
+        
+    -SyncBehavior <GitSyncBehavior>
+        The sync behavior for the git repository.
         
         Required?                    false
         Position?                    named
@@ -115,7 +124,7 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -TrustCertificate [<SwitchParameter>]
-        Whether the cmdlet should ignore certificate issues.
+        Trust the certificate when connecting to the PSU REST API.
         
         Required?                    false
         Position?                    named
@@ -123,66 +132,12 @@ PARAMETERS
         Accept pipeline input?       False
         Accept wildcard characters?  false
         
-    -ContactEmail <String>
-        {{ Fill ContactEmail Description }}
+    -UseDefaultCredentials [<SwitchParameter>]
+        Use default credentials when connecting to the PSU REST API.
         
         Required?                    false
         Position?                    named
-        Default value                None
-        Accept pipeline input?       False
-        Accept wildcard characters?  false
-        
-    -ContactName <String>
-        {{ Fill ContactName Description }}
-        
-        Required?                    false
-        Position?                    named
-        Default value                None
-        Accept pipeline input?       False
-        Accept wildcard characters?  false
-        
-    -ContactUrl <String>
-        {{ Fill ContactUrl Description }}
-        
-        Required?                    false
-        Position?                    named
-        Default value                None
-        Accept pipeline input?       False
-        Accept wildcard characters?  false
-        
-    -LicenseName <String>
-        {{ Fill LicenseName Description }}
-        
-        Required?                    false
-        Position?                    named
-        Default value                None
-        Accept pipeline input?       False
-        Accept wildcard characters?  false
-        
-    -LicenseUrl <String>
-        {{ Fill LicenseUrl Description }}
-        
-        Required?                    false
-        Position?                    named
-        Default value                None
-        Accept pipeline input?       False
-        Accept wildcard characters?  false
-        
-    -TermsOfServiceUrl <String>
-        {{ Fill TermsOfServiceUrl Description }}
-        
-        Required?                    false
-        Position?                    named
-        Default value                None
-        Accept pipeline input?       False
-        Accept wildcard characters?  false
-        
-    -Version <String>
-        {{ Fill Version Description }}
-        
-        Required?                    false
-        Position?                    named
-        Default value                None
+        Default value                False
         Accept pipeline input?       False
         Accept wildcard characters?  false
         
@@ -209,11 +164,10 @@ NOTES
     
     -------------------------- Example 1 --------------------------
     
-    PS C:\> New-PSUEndpointDocumentation -Name 'PSUHelp' -Url '/psuhelp'
+    PS C:\> New-PSUGitSetting -Remote 'https://github.com/username/repo.git' -Branch 'main' -SyncBehavior TwoWay
     
-    Creates a help definition at /psuhelp.
+    Creates a new git remote repository configuration.
     
 RELATED LINKS
-    Online Version: https://go.microsoft.com/fwlink/?LinkID=217032
 
 

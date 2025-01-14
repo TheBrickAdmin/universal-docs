@@ -7,7 +7,7 @@ SYNOPSIS
     
     
 SYNTAX
-    Set-PSUGitSetting [-AppToken <String>] [-Branch <String>] [-ComputerName <String>] [-Credential <PSCredential>] [-ExternalGit] [-GitCredential <PSCredential>] [-Integrated] [-Interval <Int32>] [-Mode {Manual | Automatic}] [-ProxyUrl <String>] [-Remote <String>] [-SyncBehavior {TwoWay | OneWay | PushOnly}] [-TrustCertificate] [-UseDefaultCredentials] [<CommonParameters>]
+    Set-PSUGitSetting [-AppToken <String>] [-Branch <String>] [-ComputerName <String>] [-Credential <PSCredential>] [-ExternalGit] [-GitCredential <PSCredential>] [-Integrated] [-Interval <Int32>] [-Mode {Manual | Automatic}] [-ProxyUrl <String>] [-Remote <String>] [-SyncBehavior {TwoWay | OneWay | PushOnly}] [-TrustCertificate] [-UseDefaultCredentials] -Settings <GitSettings> [<CommonParameters>]
     
     
 DESCRIPTION
@@ -139,6 +139,15 @@ PARAMETERS
         Position?                    named
         Default value                False
         Accept pipeline input?       False
+        Accept wildcard characters?  false
+        
+    -Settings <GitSettings>
+        {{ Fill Settings Description }}
+        
+        Required?                    true
+        Position?                    named
+        Default value                None
+        Accept pipeline input?       True (ByValue)
         Accept wildcard characters?  false
         
     <CommonParameters>

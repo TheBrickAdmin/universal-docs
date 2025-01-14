@@ -7,9 +7,9 @@ SYNOPSIS
     
     
 SYNTAX
-    New-UDTable [-Id <String>] [-Title <String>] [-Data <Object[]>] [-Columns <Hashtable[]>] [-OnRowSelection <Endpoint>] [-ShowSort] [-ShowFilter] [-ShowSearch] [-Dense] [-ShowExport] [-StickyHeader] [-PageSize <Int32>] [-PageSizeOptions <Int32[]>] [-PaginationLocation <String>] [-ShowSelection] [-ShowPagination] [-Padding <String>] [-Size <String>] [-TextOption <Hashtable>] [-ExportOption <String[]>] [-OnExport <Endpoint>] [-DisablePageSizeAll] [-DefaultSortDirection <String>] [-HideToggleAllRowsSelected] [-DisableMultiSelect] [-DisableSortRemove] [-Icon <Hashtable>] [-ClassName <String>] [-ShowRefresh] [-ToolbarContent <ScriptBlock>] [-OnRowExpand <ScriptBlock>] [-MaxHeight <Int32>] [-Language <String>] [-RemoveCard] [-OnRowStyle <ScriptBlock>] [-HeaderStyle <Hashtable>] [<CommonParameters>]
+    New-UDTable [-Id <String>] [-Title <String>] [-Data <Object[]>] [-Columns <Hashtable[]>] [-OnRowSelection <Endpoint>] [-ShowSort] [-ShowFilter] [-ShowSearch] [-Dense] [-ShowExport] [-StickyHeader] [-PageSize <Int32>] [-PageSizeOptions <Int32[]>] [-PaginationLocation <String>] [-ShowSelection] [-ShowPagination] [-Padding <String>] [-Size <String>] [-TextOption <Hashtable>] [-ExportOption <String[]>] [-OnExport <Endpoint>] [-DisablePageSizeAll] [-DefaultSortDirection <String>] [-HideToggleAllRowsSelected] [-DisableMultiSelect] [-DisableSortRemove] [-Icon <Hashtable>] [-ClassName <String>] [-ShowRefresh] [-ToolbarContent <ScriptBlock>] [-OnRowExpand <ScriptBlock>] [-MaxHeight <Int32>] [-Language <String>] [-RemoveCard] [-OnRowStyle <ScriptBlock>] [-HeaderStyle <Hashtable>] [-InitialState <Hashtable>] [<CommonParameters>]
     
-    New-UDTable [-Id <String>] [-Title <String>] -LoadRows <Endpoint> [-Columns <Hashtable[]>] [-OnRowSelection <Endpoint>] [-ShowSort] [-ShowFilter] [-ShowSearch] [-Dense] [-ShowExport] [-StickyHeader] [-PageSize <Int32>] [-PageSizeOptions <Int32[]>] [-PaginationLocation <String>] [-ShowSelection] [-ShowPagination] [-Padding <String>] [-Size <String>] [-TextOption <Hashtable>] [-ExportOption <String[]>] [-OnExport <Endpoint>] [-DisablePageSizeAll] [-DefaultSortDirection <String>] [-HideToggleAllRowsSelected] [-DisableMultiSelect] [-DisableSortRemove] [-Icon <Hashtable>] [-ClassName <String>] [-ShowRefresh] [-ToolbarContent <ScriptBlock>] [-OnRowExpand <ScriptBlock>] [-MaxHeight <Int32>] [-AutoRefresh] [-AutoRefreshInterval <Int32>] [-Language <String>] [-RemoveCard] [-OnRowStyle <ScriptBlock>] [-HeaderStyle <Hashtable>] [<CommonParameters>]
+    New-UDTable [-Id <String>] [-Title <String>] -LoadRows <Endpoint> [-Columns <Hashtable[]>] [-OnRowSelection <Endpoint>] [-ShowSort] [-ShowFilter] [-ShowSearch] [-Dense] [-ShowExport] [-StickyHeader] [-PageSize <Int32>] [-PageSizeOptions <Int32[]>] [-PaginationLocation <String>] [-ShowSelection] [-ShowPagination] [-Padding <String>] [-Size <String>] [-TextOption <Hashtable>] [-ExportOption <String[]>] [-OnExport <Endpoint>] [-DisablePageSizeAll] [-DefaultSortDirection <String>] [-HideToggleAllRowsSelected] [-DisableMultiSelect] [-DisableSortRemove] [-Icon <Hashtable>] [-ClassName <String>] [-ShowRefresh] [-ToolbarContent <ScriptBlock>] [-OnRowExpand <ScriptBlock>] [-MaxHeight <Int32>] [-AutoRefresh] [-AutoRefreshInterval <Int32>] [-Language <String>] [-RemoveCard] [-OnRowStyle <ScriptBlock>] [-HeaderStyle <Hashtable>] [-InitialState <Hashtable>] [<CommonParameters>]
     
     
 DESCRIPTION
@@ -378,6 +378,14 @@ PARAMETERS
         Accept pipeline input?       false
         Accept wildcard characters?  false
         
+    -InitialState <Hashtable>
+        
+        Required?                    false
+        Position?                    named
+        Default value                
+        Accept pipeline input?       false
+        Accept wildcard characters?  false
+        
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
@@ -694,6 +702,53 @@ OUTPUTS
     PS > New-UDTable -Data $Data -DefaultSortDirection descending -Id 'table13' -ShowSort -Columns $Columns
     
     Default Sort|Set the default sort direction and column.
+    
+    
+    
+    
+    -------------------------- EXAMPLE 14 --------------------------
+    
+    PS >$Data = 1..100 | ForEach-Object {
+    PS >     [PSCustomObject]@{
+    PS >         Dessert = "Dessert $_"
+    PS >         Calories = Get-Random -Minimum 100 -Maximum 500
+    PS >         Fat = Get-Random -Minimum 1 -Maximum 10
+    PS >         Carbs = Get-Random -Minimum 1 -Maximum 100
+    PS >         Protein = Get-Random -Minimum 1 -Maximum 100
+    PS >  }
+    PS > }
+    PS > $Columns = @(
+    PS >     New-UDTableColumn -Property Dessert -Title "Dessert" -ShowFilter
+    PS >     New-UDTableColumn -Property Calories -Title "Calories" 
+    PS >     New-UDTableColumn -Property Fat -Title "Fat" 
+    PS >     New-UDTableColumn -Property Carbs -Title "Carbs" 
+    PS >     New-UDTableColumn -Property Protein -Title "Protein" 
+    PS > )
+    PS >  New-UDTable -Id 'table14'  -ShowPagination  -LoadData {
+    PS >     foreach($Filter in $EventData.Filters)
+    PS >     {
+    PS >         $Data = $Data | Where-Object -Property $Filter.Id -Match -Value $Filter.Value
+    PS >     }
+    PS >     $TotalCount = $Data.Count 
+    PS >     if (-not [string]::IsNullOrEmpty($EventData.OrderBy))
+    PS >     {
+    PS >         $Descending = $EventData.OrderDirection -ne 'asc'
+    PS >         $Data = $Data | Sort-Object -Property $EventData.orderBy.field -Descending:$Descending
+    PS >     }
+    PS >     
+    PS >     $Data = $Data | Select-Object -First $EventData.PageSize -Skip ($EventData.Page * $EventData.PageSize)
+    PS >     $Data | Out-UDTableData -Page $EventData.Page -TotalCount $TotalCount -Properties $EventData.Properties 
+    PS > } -Columns $Columns -InitialState @{
+    PS >     pageIndex = 0
+    PS >     pageSize = 20
+    PS >     filters = @{
+    PS >         id = "dessert"
+    PS >         value = "20"
+    PS >     }
+    PS >     orderBy = @{ field = "fat" }
+    PS > } -ShowSort
+    
+    Initial state|Set the initial state of the table. This can be used to set the page index, page size, filters, and order by column.
     
     
     

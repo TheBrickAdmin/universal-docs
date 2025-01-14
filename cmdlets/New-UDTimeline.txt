@@ -7,7 +7,7 @@ SYNOPSIS
     
     
 SYNTAX
-    New-UDTimeline [[-Id] <String>] [[-Children] <ScriptBlock>] [[-Position] <String>] [<CommonParameters>]
+    New-UDTimeline [[-Id] <String>] [[-Children] <ScriptBlock>] [[-Position] <String>] [[-Sx] <Hashtable>] [<CommonParameters>]
     
     
 DESCRIPTION
@@ -39,6 +39,14 @@ PARAMETERS
         Required?                    false
         Position?                    3
         Default value                right
+        Accept pipeline input?       false
+        Accept wildcard characters?  false
+        
+    -Sx <Hashtable>
+        
+        Required?                    false
+        Position?                    4
+        Default value                
         Accept pipeline input?       false
         Accept wildcard characters?  false
         

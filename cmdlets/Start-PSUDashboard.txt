@@ -1,13 +1,15 @@
+Start-PSUDashboard is an alias for Start-PSUApp
+===========================================
 
 NAME
-    Start-PSUApp
+    Start-PSUDashboard
     
 SYNOPSIS
     Starts an app in PowerShell Universal.
     
     
 SYNTAX
-    Start-PSUApp [-AppToken <String>] [-ComputerName <String>] -Dashboard <Dashboard> [-Integrated] [-UseDefaultCredentials] [-Credential <PSCredential>] [-TrustCertificate] [<CommonParameters>]
+    Start-PSUDashboard [-AppToken <String>] [-ComputerName <String>] -Dashboard <Dashboard> [-Integrated] [-UseDefaultCredentials] [-Credential <PSCredential>] [-TrustCertificate] [<CommonParameters>]
     
     
 DESCRIPTION
@@ -101,11 +103,12 @@ NOTES
     
     -------------------------- Example 1 --------------------------
     
-    PS C:\> Get-PSUApp -Name 'MyApp' | Start-PSUApp
+    PS C:\> Get-PSUApp -Name 'MyApp' | Start-PSUDashboard
     
     Starts the 'MyApp' app in PowerShell Universal.
     
 RELATED LINKS
     Online Version: https://go.microsoft.com/fwlink/?LinkID=217032
+
 
 

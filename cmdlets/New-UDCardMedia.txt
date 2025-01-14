@@ -7,9 +7,9 @@ SYNOPSIS
     
     
 SYNTAX
-    New-UDCardMedia [-Id <String>] [-Component <String>] [-Alt <String>] [-Height <String>] [-Image <String>] [-Title <String>] [<CommonParameters>]
+    New-UDCardMedia [-Id <String>] [-Component <String>] [-Alt <String>] [-Height <String>] [-Image <String>] [-Title <String>] [-Sx <Hashtable>] [-Style <Hashtable>] [<CommonParameters>]
     
-    New-UDCardMedia [-Id <String>] [-Component <String>] [-Alt <String>] [-Height <String>] [-Title <String>] [-Source <String>] [<CommonParameters>]
+    New-UDCardMedia [-Id <String>] [-Component <String>] [-Alt <String>] [-Height <String>] [-Title <String>] [-Source <String>] [-Sx <Hashtable>] [-Style <Hashtable>] [<CommonParameters>]
     
     
 DESCRIPTION
@@ -73,6 +73,22 @@ PARAMETERS
         
     -Source <String>
         The source of the media.
+        
+        Required?                    false
+        Position?                    named
+        Default value                
+        Accept pipeline input?       false
+        Accept wildcard characters?  false
+        
+    -Sx <Hashtable>
+        
+        Required?                    false
+        Position?                    named
+        Default value                
+        Accept pipeline input?       false
+        Accept wildcard characters?  false
+        
+    -Style <Hashtable>
         
         Required?                    false
         Position?                    named

@@ -1,31 +1,24 @@
 
 NAME
-    Invoke-PSUEndpoint
+    Select-PSUDeployment
     
 SYNOPSIS
-    Invokes a custom API endpoint internally.
+    Applies a deployment to the server.
     
     
 SYNTAX
-    Invoke-PSUEndpoint [-AppToken <String>] [-Body <String>] [-ComputerName <String>] [-ContentType <String>] [-Cookies <Hashtable>] [-Credential <PSCredential>] [-Headers <Hashtable>] [-Integrated] [-Method <String>] [-TrustCertificate] -Url <String> [-UseDefaultCredentials] [-ResponseVariable <String>] [<CommonParameters>]
+    Select-PSUDeployment [-AppToken <String>] [-ComputerName <String>] [-Credential <PSCredential>] -Deployment <Deployment> [-Integrated] [-Pin] [-TrustCertificate] [-UseDefaultCredentials] [<CommonParameters>]
+    
+    Select-PSUDeployment [-AppToken <String>] [-ComputerName <String>] [-Credential <PSCredential>] [-Integrated] -ModuleName <String> -ModuleVersion <String> [-Pin] [-TrustCertificate] [-UseDefaultCredentials] [<CommonParameters>]
     
     
 DESCRIPTION
-    This cmdlet provides the ability to execute an endpoint without accessing the web server directly.
+    Applies a deployment to the server. Pinning a deployment will set the server to read-only.
     
 
 PARAMETERS
     -AppToken <String>
-        An app token used to access the endpoint.
-        
-        Required?                    false
-        Position?                    named
-        Default value                None
-        Accept pipeline input?       False
-        Accept wildcard characters?  false
-        
-    -Body <String>
-        The body of the HTTP request.
+        An application token to use for authentication.
         
         Required?                    false
         Position?                    named
@@ -34,25 +27,7 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -ComputerName <String>
-        The name or URL of the PowerShell Universal server to access.
-        
-        Required?                    false
-        Position?                    named
-        Default value                None
-        Accept pipeline input?       False
-        Accept wildcard characters?  false
-        
-    -ContentType <String>
-        The HTTP content type header value. Defaults to application/json.
-        
-        Required?                    false
-        Position?                    named
-        Default value                None
-        Accept pipeline input?       False
-        Accept wildcard characters?  false
-        
-    -Cookies <Hashtable>
-        A hashtable of cookies to send to the API.
+        The URL of the server to connect to.
         
         Required?                    false
         Position?                    named
@@ -61,7 +36,7 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -Credential <PSCredential>
-        Credentials to login to the PowerShell Universal Management API.
+        The credentials to use for authentication.
         
         Required?                    false
         Position?                    named
@@ -69,17 +44,17 @@ PARAMETERS
         Accept pipeline input?       False
         Accept wildcard characters?  false
         
-    -Headers <Hashtable>
-        A hashtable of headers to send to the API endpoint.
+    -Deployment <Deployment>
+        The deployment to apply.
         
-        Required?                    false
+        Required?                    true
         Position?                    named
         Default value                None
-        Accept pipeline input?       False
+        Accept pipeline input?       True (ByValue)
         Accept wildcard characters?  false
         
     -Integrated [<SwitchParameter>]
-        Whether to use the integrated security model.
+        For use when running within PowerShell Universal.
         
         Required?                    false
         Position?                    named
@@ -87,26 +62,8 @@ PARAMETERS
         Accept pipeline input?       False
         Accept wildcard characters?  false
         
-    -Method <String>
-        The HTTP method of the API endpoint.
-        
-        Required?                    false
-        Position?                    named
-        Default value                None
-        Accept pipeline input?       False
-        Accept wildcard characters?  false
-        
-    -TrustCertificate [<SwitchParameter>]
-        Whether the cmdlet should ignore certificate issues.
-        
-        Required?                    false
-        Position?                    named
-        Default value                False
-        Accept pipeline input?       False
-        Accept wildcard characters?  false
-        
-    -Url <String>
-        The relative URL of the API endpoint.
+    -ModuleName <String>
+        The name of the module that contains the deployment.
         
         Required?                    true
         Position?                    named
@@ -114,8 +71,17 @@ PARAMETERS
         Accept pipeline input?       False
         Accept wildcard characters?  false
         
-    -UseDefaultCredentials [<SwitchParameter>]
-        Whether to use default credentials when connecting to PowerShell Universal. Requires Windows authentication to be enabled.
+    -ModuleVersion <String>
+        The version of the module that contains the deployment.
+        
+        Required?                    true
+        Position?                    named
+        Default value                None
+        Accept pipeline input?       False
+        Accept wildcard characters?  false
+        
+    -Pin [<SwitchParameter>]
+        Pin the deployment.
         
         Required?                    false
         Position?                    named
@@ -123,12 +89,21 @@ PARAMETERS
         Accept pipeline input?       False
         Accept wildcard characters?  false
         
-    -ResponseVariable <String>
-        {{ Fill ResponseVariable Description }}
+    -TrustCertificate [<SwitchParameter>]
+        Trust the certificate when connecting to the server.
         
         Required?                    false
         Position?                    named
-        Default value                None
+        Default value                False
+        Accept pipeline input?       False
+        Accept wildcard characters?  false
+        
+    -UseDefaultCredentials [<SwitchParameter>]
+        Use the default credentials for the current user.
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
         Accept pipeline input?       False
         Accept wildcard characters?  false
         
@@ -139,7 +114,7 @@ PARAMETERS
         about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216). 
     
 INPUTS
-    None
+    PowerShellUniversal.Deployment
         
     
     
@@ -155,9 +130,19 @@ NOTES
     
     -------------------------- Example 1 --------------------------
     
-    PS C:\> Invoke-PSUEndoint -URL '/myapi'
+    PS C:\> Select-PSUDeployment -Deployment (Get-PSUDeployment -Name 'Production' -Version '2.0.0')
     
-    Returns an API endpoint internally.
+    Applies the deployment with the name 'Production' and version '2.0.0'.
+    -------------------------- Example 2 --------------------------
+    
+    PS C:\> Select-PSUDeployment -ModuleName 'MyModule' -ModuleVersion '1.0.0'
+    
+    Applies the module with the name 'MyModule' and version '1.0.0'. The module must be stored in a repository that is configured in the server.
+    -------------------------- Example 3 --------------------------
+    
+    PS C:\> Select-PSUDeployment -ModuleName 'MyModule' -ModuleVersion '1.0.0' -Pin
+    
+    Applies the module with the name 'MyModule' and version '1.0.0'. The module must be stored in a repository that is configured in the server. The deployment will be pinned.
     
 RELATED LINKS
 

@@ -1,13 +1,15 @@
+New-UDFormValidationResult is an alias for New-UDValidationResult
+===========================================
 
 NAME
-    New-UDValidationResult
+    New-UDFormValidationResult
     
 SYNOPSIS
     Creates a new validation result.
     
     
 SYNTAX
-    New-UDValidationResult [-Valid] [[-ValidationError] <String>] [[-Context] <Hashtable>] [-DisablePrevious] [[-ActiveStep] <Int32>] [<CommonParameters>]
+    New-UDFormValidationResult [-Valid] [[-ValidationError] <String>] [[-Context] <Hashtable>] [-DisablePrevious] [[-ActiveStep] <Int32>] [<CommonParameters>]
     
     
 DESCRIPTION
@@ -72,5 +74,6 @@ OUTPUTS
     
     
 RELATED LINKS
+
 
 

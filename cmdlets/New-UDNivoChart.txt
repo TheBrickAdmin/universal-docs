@@ -23,6 +23,8 @@ SYNTAX
     
     New-UDNivoChart [-Id <String>] -Data <Object> [-Definitions <Object>] [-Fill <Object>] [-Theme <Hashtable>] [-MotionConfig <String>] [-Responsive] [-Width <Int32>] [-Height <Int32>] [-Colors <Object>] [-ColorBy <Object>] [-UseDataColor] [-DisableInteractive] [-OnClick <Endpoint>] [-MarginTop <Int32>] [-MarginRight <Int32>] [-MarginBottom <Int32>] [-MarginLeft <Int32>] [-EnableGridX] [-GridXValues <Object[]>] [-EnableGridY] [-GridYValues <Object[]>] [-Layers <String[]>] [-DotSize <Int32>] [-DotBorderWidth <Int32>] [-DisableStackTooltip] [-AxisTop <Object>] [-AxisBottom <Object>] [-AxisLeft <Object>] [-AxisRight <Object>] -Line [-LineWidth <Int32>] [-EnableArea] [-AreaBaselineValue <String>] [-AreaOpacity <Single>] [-AreaBlendMode <String>] [-DisableDots] [-EnableDotLabel] [-DotLabelYOffset <Int32>] [-YScaleStacked] [-YScaleMin <Int32>] [-YScaleMax <Int32>] [-Curve <String>] [<CommonParameters>]
     
+    New-UDNivoChart [-Id <String>] -Data <Object> [-Definitions <Object>] [-Fill <Object>] [-Theme <Hashtable>] [-MotionConfig <String>] [-Responsive] [-Width <Int32>] [-Height <Int32>] [-Colors <Object>] [-ColorBy <Object>] [-UseDataColor] [-DisableInteractive] [-OnClick <Endpoint>] [-MarginTop <Int32>] [-MarginRight <Int32>] [-MarginBottom <Int32>] [-MarginLeft <Int32>] [-Network] [-LinkDistance <Int32>] [-CenteringStrength <Double>] [-Repulsivity <Int32>] [-DistanceMin <Int32>] [-DistanceMax <Int32>] [-Iterations <Int32>] [-NodeColor <String>] [-NodeBorderColor <String>] [-LinkThickness <Int32>] [-LinkColor <String>] [-LinkBlendMode <String>] [<CommonParameters>]
+    
     
 DESCRIPTION
     Creates a new Nivo chart.
@@ -1015,6 +1017,104 @@ PARAMETERS
         Required?                    false
         Position?                    named
         Default value                False
+        Accept pipeline input?       false
+        Accept wildcard characters?  false
+        
+    -Network [<SwitchParameter>]
+        region Network
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Accept wildcard characters?  false
+        
+    -LinkDistance <Int32>
+        
+        Required?                    false
+        Position?                    named
+        Default value                0
+        Accept pipeline input?       false
+        Accept wildcard characters?  false
+        
+    -CenteringStrength <Double>
+        
+        Required?                    false
+        Position?                    named
+        Default value                0
+        Accept pipeline input?       false
+        Accept wildcard characters?  false
+        
+    -Repulsivity <Int32>
+        
+        Required?                    false
+        Position?                    named
+        Default value                0
+        Accept pipeline input?       false
+        Accept wildcard characters?  false
+        
+    -DistanceMin <Int32>
+        
+        Required?                    false
+        Position?                    named
+        Default value                0
+        Accept pipeline input?       false
+        Accept wildcard characters?  false
+        
+    -DistanceMax <Int32>
+        
+        Required?                    false
+        Position?                    named
+        Default value                0
+        Accept pipeline input?       false
+        Accept wildcard characters?  false
+        
+    -Iterations <Int32>
+        
+        Required?                    false
+        Position?                    named
+        Default value                0
+        Accept pipeline input?       false
+        Accept wildcard characters?  false
+        
+    -NodeColor <String>
+        
+        Required?                    false
+        Position?                    named
+        Default value                
+        Accept pipeline input?       false
+        Accept wildcard characters?  false
+        
+    -NodeBorderColor <String>
+        
+        Required?                    false
+        Position?                    named
+        Default value                
+        Accept pipeline input?       false
+        Accept wildcard characters?  false
+        
+    -LinkThickness <Int32>
+        
+        Required?                    false
+        Position?                    named
+        Default value                0
+        Accept pipeline input?       false
+        Accept wildcard characters?  false
+        
+    -LinkColor <String>
+        
+        Required?                    false
+        Position?                    named
+        Default value                
+        Accept pipeline input?       false
+        Accept wildcard characters?  false
+        
+    -LinkBlendMode <String>
+        endregion
+        
+        Required?                    false
+        Position?                    named
+        Default value                
         Accept pipeline input?       false
         Accept wildcard characters?  false
         

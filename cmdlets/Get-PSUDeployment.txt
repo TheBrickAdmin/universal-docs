@@ -1,26 +1,24 @@
-Remove-PSUDashboard is an alias for Remove-PSUApp
-===========================================
 
 NAME
-    Remove-PSUDashboard
+    Get-PSUDeployment
     
 SYNOPSIS
-    Removes an app from PowerShell Universal.
+    Returns deployment information from the PowerShell Universal server.
     
     
 SYNTAX
-    Remove-PSUDashboard [-Dashboard] <Dashboard> [-AppToken <String>] [-ComputerName <String>] [-Integrated] [-UseDefaultCredentials] [-Credential <PSCredential>] [-TrustCertificate] [<CommonParameters>]
+    Get-PSUDeployment [-AppToken <String>] [-ComputerName <String>] [-Credential <PSCredential>] [-Integrated] [-Name <String>] [-TrustCertificate] [-UseDefaultCredentials] [-Version <String>] [<CommonParameters>]
     
-    Remove-PSUDashboard [-Id] <Int64> [-AppToken <String>] [-ComputerName <String>] [-Integrated] [-UseDefaultCredentials] [-Credential <PSCredential>] [-TrustCertificate] [<CommonParameters>]
+    Get-PSUDeployment [-AppToken <String>] [-ComputerName <String>] [-Credential <PSCredential>] [-Integrated] [-Pinned] [-TrustCertificate] [-UseDefaultCredentials] [<CommonParameters>]
     
     
 DESCRIPTION
-    Removes an app from PowerShell Universal.
+    Returns deployment information from the PowerShell Universal server.
     
 
 PARAMETERS
     -AppToken <String>
-        The AppToken that is used for calling the PowerShell Universal Management API. You can also call Connect-PSUServer before calling this cmdlet to set the AppToken for the entire session.
+        An application token to use for authentication.
         
         Required?                    false
         Position?                    named
@@ -29,7 +27,7 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -ComputerName <String>
-        Specifies the computer name or URL that should be called when accessing the PowerShell Universal Management API. You can also use Connect-PSUServer before calling this cmdlet to set the computer name for the entire session.
+        The URL of the server to connect to.
         
         Required?                    false
         Position?                    named
@@ -37,26 +35,44 @@ PARAMETERS
         Accept pipeline input?       False
         Accept wildcard characters?  false
         
-    -Dashboard <Dashboard>
-        The dashboard (app) to remove.
+    -Credential <PSCredential>
+        The credentials to use to connect to the server.
         
-        Required?                    true
-        Position?                    0
-        Default value                None
-        Accept pipeline input?       True (ByValue)
-        Accept wildcard characters?  false
-        
-    -Id <Int64>
-        The ID of the app to remove.
-        
-        Required?                    true
-        Position?                    0
+        Required?                    false
+        Position?                    named
         Default value                None
         Accept pipeline input?       False
         Accept wildcard characters?  false
         
     -Integrated [<SwitchParameter>]
-        Executes the command internally rather than using the Management API. Only works when running script from within PowerShell Universal.
+        For use when running within PowerShell Universal.
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       False
+        Accept wildcard characters?  false
+        
+    -Name <String>
+        The name of the deployment to return.
+        
+        Required?                    false
+        Position?                    named
+        Default value                None
+        Accept pipeline input?       False
+        Accept wildcard characters?  false
+        
+    -Pinned [<SwitchParameter>]
+        Returns the pinned deployment information. Returns $null if no deployment is pinned.
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       False
+        Accept wildcard characters?  false
+        
+    -TrustCertificate [<SwitchParameter>]
+        Trust the certificate when connecting to the server.
         
         Required?                    false
         Position?                    named
@@ -65,7 +81,7 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -UseDefaultCredentials [<SwitchParameter>]
-        Use default credentials when connecting to the management API
+        Use the default credentials for the current user.
         
         Required?                    false
         Position?                    named
@@ -73,21 +89,12 @@ PARAMETERS
         Accept pipeline input?       False
         Accept wildcard characters?  false
         
-    -Credential <PSCredential>
-        Credentials to login to the PowerShell Universal Management API.
+    -Version <String>
+        The version of the deployment to return.
         
         Required?                    false
         Position?                    named
         Default value                None
-        Accept pipeline input?       False
-        Accept wildcard characters?  false
-        
-    -TrustCertificate [<SwitchParameter>]
-        Whether the cmdlet should ignore certificate issues.
-        
-        Required?                    false
-        Position?                    named
-        Default value                False
         Accept pipeline input?       False
         Accept wildcard characters?  false
         
@@ -98,7 +105,7 @@ PARAMETERS
         about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216). 
     
 INPUTS
-    PowerShellUniversal.Dashboard
+    None
         
     
     
@@ -114,12 +121,15 @@ NOTES
     
     -------------------------- Example 1 --------------------------
     
-    PS C:\> Remove-PSUDashboard -Id 1
+    PS C:\> Get-PSUDeployment -Name 'Production'
     
-    Removes an app with the ID of 1.
+    Returns deployment information with the name 'Production'.
+    -------------------------- Example 2 --------------------------
+    
+    PS C:\> Get-PSUDeployment -Pinned
+    
+    Returns the pinned deployment information. Returns $null if no deployment is pinned.
     
 RELATED LINKS
-    Online Version: https://go.microsoft.com/fwlink/?LinkID=217032
-
 
 

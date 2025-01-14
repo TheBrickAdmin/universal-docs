@@ -1,19 +1,21 @@
+Invoke-PSUCommand is an alias for Send-PSUEvent
+===========================================
 
 NAME
-    Send-PSUEvent
+    Invoke-PSUCommand
     
 SYNOPSIS
     Sends events to an event hub.
     
     
 SYNTAX
-    Send-PSUEvent [-AppToken <String>] [-ComputerName <String>] [-Data <Object>] [-Integrated] [-UseDefaultCredentials] -Computer <String> [-Credential <PSCredential>] [-TrustCertificate] [<CommonParameters>]
+    Invoke-PSUCommand [-AppToken <String>] [-ComputerName <String>] [-Data <Object>] [-Integrated] [-UseDefaultCredentials] -Computer <String> [-Credential <PSCredential>] [-TrustCertificate] [<CommonParameters>]
     
-    Send-PSUEvent [-AppToken <String>] [-ComputerName <String>] [-Data <Object>] -Hub <String> [-Integrated] [-UseDefaultCredentials] [-ConnectionId <String>] [-Credential <PSCredential>] [-TrustCertificate] [<CommonParameters>]
+    Invoke-PSUCommand [-AppToken <String>] [-ComputerName <String>] [-Data <Object>] -Hub <String> [-Integrated] [-UseDefaultCredentials] [-ConnectionId <String>] [-Credential <PSCredential>] [-TrustCertificate] [<CommonParameters>]
     
-    Send-PSUEvent [-AppToken <String>] [-ComputerName <String>] -Hub <String> [-Integrated] [-UseDefaultCredentials] [-ConnectionId <String>] [-Command <String>] [-Credential <PSCredential>] [-Parameters <Hashtable>] [-TrustCertificate] [<CommonParameters>]
+    Invoke-PSUCommand [-AppToken <String>] [-ComputerName <String>] -Hub <String> [-Integrated] [-UseDefaultCredentials] [-ConnectionId <String>] [-Command <String>] [-Credential <PSCredential>] [-Parameters <Hashtable>] [-TrustCertificate] [<CommonParameters>]
     
-    Send-PSUEvent [-AppToken <String>] [-ComputerName <String>] [-Integrated] [-UseDefaultCredentials] [-Command <String>] -Computer <String> [-Credential <PSCredential>] [-Parameters <Hashtable>] [-TrustCertificate] [<CommonParameters>]
+    Invoke-PSUCommand [-AppToken <String>] [-ComputerName <String>] [-Integrated] [-UseDefaultCredentials] [-Command <String>] -Computer <String> [-Credential <PSCredential>] [-Parameters <Hashtable>] [-TrustCertificate] [<CommonParameters>]
     
     
 DESCRIPTION
@@ -152,11 +154,12 @@ NOTES
     
     -------------------------- Example 1 --------------------------
     
-    PS C:\> Send-PSUEvent -Hub 'MyHub' -Data @{ Name = 'Adam' }
+    PS C:\> Invoke-PSUCommand -Hub 'MyHub' -Data @{ Name = 'Adam' }
     
     Sends an event to the MyHub event hub. All connected clients will receive the event.
     
 RELATED LINKS
     Online Version: https://go.microsoft.com/fwlink/?LinkID=217032
+
 
 
