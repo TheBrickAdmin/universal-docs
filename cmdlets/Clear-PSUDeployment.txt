@@ -1,26 +1,22 @@
 
 NAME
-    New-UDEndpoint
+    Clear-PSUDeployment
     
 SYNOPSIS
-    Creates a scheduled endpoint with a dashboard.
+    Clears the pinned deployment.
     
     
 SYNTAX
-    New-UDEndpoint [-ArgumentList <Object[]>] -Endpoint <ScriptBlock> [-Id <String>] [-Role <String[]>] [<CommonParameters>]
-    
-    New-UDEndpoint [-ArgumentList <Object[]>] -Endpoint <ScriptBlock> [-Id <String>] [-Role <String[]>] -Schedule <EndpointSchedule> [<CommonParameters>]
-    
-    New-UDEndpoint [-ArgumentList <Object[]>] [-Id <String>] [-Role <String[]>] -JavaScript <String> [<CommonParameters>]
+    Clear-PSUDeployment [-AppToken <String>] [-ComputerName <String>] [-Credential <PSCredential>] [-Integrated] [-TrustCertificate] [-UseDefaultCredentials] [<CommonParameters>]
     
     
 DESCRIPTION
-    Creates a scheduled endpoint with a dashboard.
+    Clears the pinned deployment. Performs no action if no deployment is pinned.
     
 
 PARAMETERS
-    -ArgumentList <Object[]>
-        Not required.
+    -AppToken <String>
+        An application token to use for authentication.
         
         Required?                    false
         Position?                    named
@@ -28,17 +24,8 @@ PARAMETERS
         Accept pipeline input?       False
         Accept wildcard characters?  false
         
-    -Endpoint <ScriptBlock>
-        The endpoint to run on the schedule.
-        
-        Required?                    true
-        Position?                    named
-        Default value                None
-        Accept pipeline input?       False
-        Accept wildcard characters?  false
-        
-    -Id <String>
-        The ID of the endpoint.
+    -ComputerName <String>
+        The URL of the server to connect to.
         
         Required?                    false
         Position?                    named
@@ -46,8 +33,8 @@ PARAMETERS
         Accept pipeline input?       False
         Accept wildcard characters?  false
         
-    -Role <String[]>
-        Not used.
+    -Credential <PSCredential>
+        The credentials to use for authentication.
         
         Required?                    false
         Position?                    named
@@ -55,21 +42,30 @@ PARAMETERS
         Accept pipeline input?       False
         Accept wildcard characters?  false
         
-    -Schedule <EndpointSchedule>
-        The schedule to run for the endpoint. Use New-UDEndpointSchedule to create a schedule object.
+    -Integrated [<SwitchParameter>]
+        For use when running within PowerShell Universal.
         
-        Required?                    true
+        Required?                    false
         Position?                    named
-        Default value                None
+        Default value                False
         Accept pipeline input?       False
         Accept wildcard characters?  false
         
-    -JavaScript <String>
-        {{ Fill JavaScript Description }}
+    -TrustCertificate [<SwitchParameter>]
+        Trust the certificate on the server.
         
-        Required?                    true
+        Required?                    false
         Position?                    named
-        Default value                None
+        Default value                False
+        Accept pipeline input?       False
+        Accept wildcard characters?  false
+        
+    -UseDefaultCredentials [<SwitchParameter>]
+        Use the default credentials for the current user.
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
         Accept pipeline input?       False
         Accept wildcard characters?  false
         
@@ -96,17 +92,10 @@ NOTES
     
     -------------------------- Example 1 --------------------------
     
-    $Schedule = New-UDEndpointSchedule 10 -Second
-    New-UDEndpoint -Schedule $Schedule -Endpoint {
-        $Cache:Random = Get-Random
-    }
-    New-UDButton -Text "Get Random" -OnClick {
-        Show-UDToast $Cache:Random
-    }
+    PS C:\> Clear-PSUDeployment
     
-    Scheduled Endpoints|Caches a random value every ten seconds
+    Clears the pinned deployment.
     
 RELATED LINKS
-    Online Version: https://go.microsoft.com/fwlink/?LinkID=217032
 
 

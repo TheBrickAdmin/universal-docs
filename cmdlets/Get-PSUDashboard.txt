@@ -1,13 +1,15 @@
+Get-PSUDashboard is an alias for Get-PSUApp
+===========================================
 
 NAME
-    Get-PSUApp
+    Get-PSUDashboard
     
 SYNOPSIS
     Returns apps defined in PowerShell Universal.
     
     
 SYNTAX
-    Get-PSUApp [-AppToken <String>] [-ComputerName <String>] [-Integrated] [-Name <String>] [-UseDefaultCredentials] [-Credential <PSCredential>] [-TrustCertificate] [<CommonParameters>]
+    Get-PSUDashboard [-AppToken <String>] [-ComputerName <String>] [-Integrated] [-Name <String>] [-UseDefaultCredentials] [-Credential <PSCredential>] [-TrustCertificate] [<CommonParameters>]
     
     
 DESCRIPTION
@@ -101,11 +103,12 @@ NOTES
     
     -------------------------- Example 1 --------------------------
     
-    PS C:\> Get-PSUApp -Name 'MyApp'
+    PS C:\> Get-PSUDashboard -Name 'MyApp'
     
     Returns 'MyApp' from PowerShell Universal.
     
 RELATED LINKS
     Online Version: https://go.microsoft.com/fwlink/?LinkID=217032
+
 
 

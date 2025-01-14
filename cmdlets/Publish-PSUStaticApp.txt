@@ -1,0 +1,78 @@
+
+NAME
+    Publish-PSUStaticApp
+    
+SYNOPSIS
+    Publish a new PowerShell Universal static app.
+    
+    
+SYNTAX
+    Publish-PSUStaticApp -Definition <ScriptBlock> -DestinationPath <String> [-Force] [<CommonParameters>]
+    
+    
+DESCRIPTION
+    Publish a new PowerShell Universal static app.
+    
+
+PARAMETERS
+    -Definition <ScriptBlock>
+        The definition of the static app.
+        
+        Required?                    true
+        Position?                    named
+        Default value                None
+        Accept pipeline input?       False
+        Accept wildcard characters?  false
+        
+    -DestinationPath <String>
+        The path to publish the static app to.
+        
+        Required?                    true
+        Position?                    named
+        Default value                None
+        Accept pipeline input?       False
+        Accept wildcard characters?  false
+        
+    -Force [<SwitchParameter>]
+        Forces the publishing of the static app. Removes the destination path if it exists.
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       False
+        Accept wildcard characters?  false
+        
+    <CommonParameters>
+        This cmdlet supports the common parameters: Verbose, Debug,
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see
+        about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216). 
+    
+INPUTS
+    None
+        
+    
+    
+OUTPUTS
+    System.Object
+        
+    
+    
+NOTES
+    
+    
+        
+    
+    -------------------------- Example 1 --------------------------
+    
+    PS C:\> Publish-PSUStaticApp -Definition {
+        New-UDApp -Name 'MyApp' -Content {
+            New-UDButton -Text 'Hello!'
+        }
+    } -DestinationPath 'C:\MyApp'
+    
+    Publishes a new static app to the 'C:\MyApp' directory.
+    
+RELATED LINKS
+
+

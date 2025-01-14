@@ -1,13 +1,15 @@
+Remove-PSUServer is an alias for Uninstall-PSUServer
+===========================================
 
 NAME
-    Uninstall-PSUServer
+    Remove-PSUServer
     
 SYNOPSIS
     Removes the PowerShell Universal server.
     
     
 SYNTAX
-    Uninstall-PSUServer [[-Path] <String>] [[-IISWebsite] <String>] [<CommonParameters>]
+    Remove-PSUServer [[-Path] <String>] [[-IISWebsite] <String>] [<CommonParameters>]
     
     
 DESCRIPTION
@@ -53,5 +55,6 @@ OUTPUTS
     
     
 RELATED LINKS
+
 
 

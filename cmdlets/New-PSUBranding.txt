@@ -1,22 +1,24 @@
+New-PSUBranding is an alias for Set-PSUBranding
+===========================================
 
 NAME
-    Set-PSUBranding
+    New-PSUBranding
     
 SYNOPSIS
     Sets branding for PowerShell Universal.
     
     
 SYNTAX
-    Set-PSUBranding [-AdminConsoleTitle <String>] [-AppBarLogo <String>] [-AppNotRunningDescription <String>] [-AppToken <String>] [-ComputerName <String>] [-Copyright <String>] [-Credential <PSCredential>] [-CssStylesheet <String[]>] [-CssStylesheetIntegrity <String[]>] [-Favicon <String>] [-HeaderColor <String>] [-HeaderFontColor <String>] [-Integrated] [-LoggedOut <String>] [-LoggedOutDescription <String>] [-LoginPageDescription <String>] [-LoginPageImage <String>] [-LoginPageLinks <LoginPageLink[]>] [-LoginPageText <String>] [-LoginPageTitle <String>] [-NotAuthorizedDescription <String>] [-NotAuthorizedTitle <String>] [-PageNotFoundDescription <String>] [-PageNotFoundTitle <String>] [-PrimaryColor <String>] [-PrimaryFontColor <String>] [-SecondaryColor <String>] [-SecondaryFontColor <String>] [-TrustCertificate] [-UseDefaultCredentials] [<CommonParameters>]
+    New-PSUBranding [-AdminConsoleTitle <String>] [-AppBarLogo <String>] [-AppNotRunningDescription <String>] [-AppToken <String>] [-ComputerName <String>] [-Copyright <String>] [-Credential <PSCredential>] [-CssStylesheet <String[]>] [-CssStylesheetIntegrity <String[]>] [-Favicon <String>] [-HeaderColor <String>] [-HeaderFontColor <String>] [-Integrated] [-LoggedOut <String>] [-LoggedOutDescription <String>] [-LoginPageDescription <String>] [-LoginPageImage <String>] [-LoginPageLinks <LoginPageLink[]>] [-LoginPageText <String>] [-LoginPageTitle <String>] [-NotAuthorizedDescription <String>] [-NotAuthorizedTitle <String>] [-PageNotFoundDescription <String>] [-PageNotFoundTitle <String>] [-PrimaryColor <String>] [-PrimaryFontColor <String>] [-SecondaryColor <String>] [-SecondaryFontColor <String>] [-TrustCertificate] [-UseDefaultCredentials] [-DarkAppBarLogo <String>] [-LoginPageTheme <ThemePreference>] [-PortalTitle <String>] [<CommonParameters>]
     
     
 DESCRIPTION
-    {{ Fill in the Description }}
+    Sets branding for PowerShell Universal.
     
 
 PARAMETERS
     -AdminConsoleTitle <String>
-        {{ Fill AdminConsoleTitle Description }}
+        The title of the admin console.
         
         Required?                    false
         Position?                    named
@@ -25,7 +27,7 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -AppBarLogo <String>
-        {{ Fill AppBarLogo Description }}
+        The URL to the app bar logo.
         
         Required?                    false
         Position?                    named
@@ -34,7 +36,7 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -AppNotRunningDescription <String>
-        {{ Fill AppNotRunningDescription Description }}
+        The text to display when the app is not running.
         
         Required?                    false
         Position?                    named
@@ -43,7 +45,7 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -AppToken <String>
-        {{ Fill AppToken Description }}
+        The app token to access the PowerShell Universal server.
         
         Required?                    false
         Position?                    named
@@ -52,7 +54,7 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -ComputerName <String>
-        {{ Fill ComputerName Description }}
+        The name or URL of the PowerShell Universal server.
         
         Required?                    false
         Position?                    named
@@ -61,7 +63,7 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -Copyright <String>
-        {{ Fill Copyright Description }}
+        The copyright text to display.
         
         Required?                    false
         Position?                    named
@@ -79,7 +81,7 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -CssStylesheet <String[]>
-        {{ Fill CssStylesheet Description }}
+        A list of CSS stylesheets to include.
         
         Required?                    false
         Position?                    named
@@ -88,7 +90,7 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -CssStylesheetIntegrity <String[]>
-        {{ Fill CssStylesheetIntegrity Description }}
+        The integrity of the CSS stylesheets.
         
         Required?                    false
         Position?                    named
@@ -97,7 +99,7 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -Favicon <String>
-        {{ Fill Favicon Description }}
+        The URL to the favicon.
         
         Required?                    false
         Position?                    named
@@ -106,7 +108,7 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -HeaderColor <String>
-        {{ Fill HeaderColor Description }}
+        The admin console header color.
         
         Required?                    false
         Position?                    named
@@ -115,7 +117,7 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -HeaderFontColor <String>
-        {{ Fill HeaderFontColor Description }}
+        The admin console header font color.
         
         Required?                    false
         Position?                    named
@@ -124,7 +126,7 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -Integrated [<SwitchParameter>]
-        {{ Fill Integrated Description }}
+        Executes the command internally rather than using the Management API. Only works when running script from within PowerShell Universal.
         
         Required?                    false
         Position?                    named
@@ -133,7 +135,7 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -LoggedOut <String>
-        {{ Fill LoggedOut Description }}
+        The text to display when logged out.
         
         Required?                    false
         Position?                    named
@@ -142,7 +144,7 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -LoggedOutDescription <String>
-        {{ Fill LoggedOutDescription Description }}
+        The description to display when logged out.
         
         Required?                    false
         Position?                    named
@@ -151,7 +153,7 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -LoginPageDescription <String>
-        {{ Fill LoginPageDescription Description }}
+        The login page description.
         
         Required?                    false
         Position?                    named
@@ -285,6 +287,33 @@ PARAMETERS
         Accept pipeline input?       False
         Accept wildcard characters?  false
         
+    -DarkAppBarLogo <String>
+        {{ Fill DarkAppBarLogo Description }}
+        
+        Required?                    false
+        Position?                    named
+        Default value                None
+        Accept pipeline input?       False
+        Accept wildcard characters?  false
+        
+    -LoginPageTheme <ThemePreference>
+        {{ Fill LoginPageTheme Description }}
+        
+        Required?                    false
+        Position?                    named
+        Default value                None
+        Accept pipeline input?       False
+        Accept wildcard characters?  false
+        
+    -PortalTitle <String>
+        {{ Fill PortalTitle Description }}
+        
+        Required?                    false
+        Position?                    named
+        Default value                None
+        Accept pipeline input?       False
+        Accept wildcard characters?  false
+        
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
@@ -308,10 +337,11 @@ NOTES
     
     -------------------------- Example 1 --------------------------
     
-    PS C:\> {{ Add example code here }}
+    PS C:\> New-PSUBranding -LoginPageImage 'https://example.com/image.png' -AppBarLogo 'https://example.com/logo.png'
     
-    {{ Add example description here }}
+    Sets the login page image and app bar logo.
     
 RELATED LINKS
+
 
 

@@ -422,6 +422,28 @@ OUTPUTS
     
     
     
+    -------------------------- EXAMPLE 7 --------------------------
+    
+    PS >New-UDDataGrid -LoadRows {
+    PS >     $Data = @(
+    PS >         @{ Id = 1; Name = 'Adam'; number = Get-Random }
+    PS >         @{ Id = 2; Name = 'Tom'; number = Get-Random }
+    PS >         @{ Id = 3; Name = 'Sarah'; number = Get-Random }
+    PS >     )
+    PS >     @{
+    PS >         rows     = $Data 
+    PS >         rowCount = $Data.Length
+    PS >     }
+    PS > } -Columns @(
+    PS >     New-UDDataGridColumn -Field 'Name' -HeaderName 'A Name' -Flex 1 -HeaderAlign 'center' -Align 'center' -DisableColumnMenu
+    PS >     New-UDDataGridColumn -Field 'Number' -HeaderName 'A Number' -Flex 1 -HeaderAlign 'right' -Align 'right' -DisableColumnMenu
+    PS > ) -Id 'dataGrid7' -CheckboxSelection -CheckboxSelectionVisibleOnly -DisableRowSelectionOnClick
+    
+    Selection| Adds support for row selection.
+    
+    
+    
+    
     
 RELATED LINKS
 

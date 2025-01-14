@@ -1,17 +1,19 @@
+New-PSUDashboard is an alias for New-PSUApp
+===========================================
 
 NAME
-    New-PSUApp
+    New-PSUDashboard
     
 SYNOPSIS
     Creates a new app in PowerShell Universal.
     
     
 SYNTAX
-    New-PSUApp [-AppToken <String>] [-Authenticated] [-AutoDeploy] [-BaseUrl <String>] [-Command <String>] [-Component <DashboardComponent[]>] [-ComputerName <String>] [-Credential <String>] [-Description <String>] [-DisableAutoStart] [-DisableErrorToast] [-DisableInteractiveHost] [-DisableStartupLog] [-Environment <String>] [-FavIcon <String>] [-GrantAppToken] [-IdleTimeout <Int32>] [-Integrated] [-Maintenance] [-Module <String>] -Name <String> [-Role <String[]>] [-SessionTimeout <Int32>] [-Tag <Tag[]>] [-UseDefaultCredentials] [-VerboseErrorMessages] [-ComputerGroup <String[]>] [-OnSessionTimeout <ScriptBlock>] [-AvailableInBranch <String[]>] [-TrustCertificate] [<CommonParameters>]
+    New-PSUDashboard [-AppToken <String>] [-Authenticated] [-AutoDeploy] [-BaseUrl <String>] [-Command <String>] [-Component <DashboardComponent[]>] [-ComputerName <String>] [-Credential <String>] [-Description <String>] [-DisableAutoStart] [-DisableErrorToast] [-DisableInteractiveHost] [-DisableStartupLog] [-Environment <String>] [-FavIcon <String>] [-GrantAppToken] [-IdleTimeout <Int32>] [-Integrated] [-Maintenance] [-Module <String>] -Name <String> [-Role <String[]>] [-SessionTimeout <Int32>] [-Tag <Tag[]>] [-UseDefaultCredentials] [-VerboseErrorMessages] [-ComputerGroup <String[]>] [-OnSessionTimeout <ScriptBlock>] [-AvailableInBranch <String[]>] [-TrustCertificate] [<CommonParameters>]
     
-    New-PSUApp [-AppToken <String>] [-Authenticated] [-AutoDeploy] [-BaseUrl <String>] [-Component <DashboardComponent[]>] [-ComputerName <String>] -Content <ScriptBlock> [-Credential <String>] [-Description <String>] [-DisableAutoStart] [-DisableErrorToast] [-DisableInteractiveHost] [-DisableStartupLog] [-Environment <String>] [-FavIcon <String>] [-GrantAppToken] [-IdleTimeout <Int32>] [-Integrated] [-Maintenance] -Name <String> [-Role <String[]>] [-SessionTimeout <Int32>] [-Tag <Tag[]>] [-UseDefaultCredentials] [-VerboseErrorMessages] [-ComputerGroup <String[]>] [-OnSessionTimeout <ScriptBlock>] [-AvailableInBranch <String[]>] [-TrustCertificate] [<CommonParameters>]
+    New-PSUDashboard [-AppToken <String>] [-Authenticated] [-AutoDeploy] [-BaseUrl <String>] [-Component <DashboardComponent[]>] [-ComputerName <String>] -Content <ScriptBlock> [-Credential <String>] [-Description <String>] [-DisableAutoStart] [-DisableErrorToast] [-DisableInteractiveHost] [-DisableStartupLog] [-Environment <String>] [-FavIcon <String>] [-GrantAppToken] [-IdleTimeout <Int32>] [-Integrated] [-Maintenance] -Name <String> [-Role <String[]>] [-SessionTimeout <Int32>] [-Tag <Tag[]>] [-UseDefaultCredentials] [-VerboseErrorMessages] [-ComputerGroup <String[]>] [-OnSessionTimeout <ScriptBlock>] [-AvailableInBranch <String[]>] [-TrustCertificate] [<CommonParameters>]
     
-    New-PSUApp [-AppToken <String>] [-Authenticated] [-AutoDeploy] [-BaseUrl <String>] [-Component <DashboardComponent[]>] [-ComputerName <String>] [-Credential <String>] [-Description <String>] [-DisableAutoStart] [-DisableErrorToast] [-DisableInteractiveHost] [-DisableStartupLog] [-Environment <String>] [-FavIcon <String>] [-FilePath <String>] [-GrantAppToken] [-IdleTimeout <Int32>] [-Integrated] [-Maintenance] -Name <String> [-Role <String[]>] [-SessionTimeout <Int32>] [-Tag <Tag[]>] [-UseDefaultCredentials] [-VerboseErrorMessages] [-ComputerGroup <String[]>] [-OnSessionTimeout <ScriptBlock>] [-AvailableInBranch <String[]>] [-TrustCertificate] [<CommonParameters>]
+    New-PSUDashboard [-AppToken <String>] [-Authenticated] [-AutoDeploy] [-BaseUrl <String>] [-Component <DashboardComponent[]>] [-ComputerName <String>] [-Credential <String>] [-Description <String>] [-DisableAutoStart] [-DisableErrorToast] [-DisableInteractiveHost] [-DisableStartupLog] [-Environment <String>] [-FavIcon <String>] [-FilePath <String>] [-GrantAppToken] [-IdleTimeout <Int32>] [-Integrated] [-Maintenance] -Name <String> [-Role <String[]>] [-SessionTimeout <Int32>] [-Tag <Tag[]>] [-UseDefaultCredentials] [-VerboseErrorMessages] [-ComputerGroup <String[]>] [-OnSessionTimeout <ScriptBlock>] [-AvailableInBranch <String[]>] [-TrustCertificate] [<CommonParameters>]
     
     
 DESCRIPTION
@@ -330,11 +332,12 @@ NOTES
     
     -------------------------- Example 1 --------------------------
     
-    New-PSUApp -Name 'App' -BaseUrl '/app' -FilePath "app.ps1"
+    New-PSUDashboard -Name 'App' -BaseUrl '/app' -FilePath "app.ps1"
     
     Creates an app using the app.ps1 file in the repository directory and serves it at the base URL of /app.
     
 RELATED LINKS
     Online Version: https://go.microsoft.com/fwlink/?LinkID=217032
+
 
 

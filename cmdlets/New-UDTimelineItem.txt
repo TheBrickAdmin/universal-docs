@@ -7,7 +7,7 @@ SYNOPSIS
     
     
 SYNTAX
-    New-UDTimelineItem [[-Content] <ScriptBlock>] [[-OppositeContent] <ScriptBlock>] [[-Icon] <Hashtable>] [[-Color] <String>] [[-Variant] <String>] [<CommonParameters>]
+    New-UDTimelineItem [[-Content] <ScriptBlock>] [[-OppositeContent] <ScriptBlock>] [[-Icon] <Hashtable>] [[-Color] <String>] [[-Variant] <String>] [[-Sx] <Hashtable>] [<CommonParameters>]
     
     
 DESCRIPTION
@@ -57,6 +57,14 @@ PARAMETERS
         Required?                    false
         Position?                    5
         Default value                filled
+        Accept pipeline input?       false
+        Accept wildcard characters?  false
+        
+    -Sx <Hashtable>
+        
+        Required?                    false
+        Position?                    6
+        Default value                
         Accept pipeline input?       false
         Accept wildcard characters?  false
         

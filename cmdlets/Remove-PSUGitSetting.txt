@@ -7,7 +7,7 @@ SYNOPSIS
     
     
 SYNTAX
-    Remove-PSUGitSetting [-AppToken <String>] [-ComputerName <String>] [-Credential <PSCredential>] [-Integrated] [-TrustCertificate] [-UseDefaultCredentials] [<CommonParameters>]
+    Remove-PSUGitSetting [-AppToken <String>] [-ComputerName <String>] [-Credential <PSCredential>] [-Integrated] [-TrustCertificate] [-UseDefaultCredentials] -Settings <GitSettings> [<CommonParameters>]
     
     
 DESCRIPTION
@@ -67,6 +67,15 @@ PARAMETERS
         Position?                    named
         Default value                False
         Accept pipeline input?       False
+        Accept wildcard characters?  false
+        
+    -Settings <GitSettings>
+        {{ Fill Settings Description }}
+        
+        Required?                    true
+        Position?                    named
+        Default value                None
+        Accept pipeline input?       True (ByValue)
         Accept wildcard characters?  false
         
     <CommonParameters>
