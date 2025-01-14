@@ -4,6 +4,15 @@ description: Changelog for the Visual Studio Code extension for PowerShell Unive
 
 # Extension Changelog
 
+## 5.2.0 - 1/14/2025
+
+* Removed samples section
+* Fixed links in help nodes
+* Added a SSL bypass check for untrusted certificates
+* Fixed an issue saving modules
+* Fixed an issue viewing apps
+* Fixed an issue editing scripts.ps1
+
 ## 5.0.0 - 11/5/2024
 
 * Added support for editing app modules

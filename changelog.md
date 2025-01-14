@@ -4,6 +4,89 @@ description: Changelog for PowerShell Universal.
 
 # Changelog
 
+## 5.2.0 - 1/14/2025
+
+### Features
+
+#### Admin Console
+
+* Added sorting to all tables in the admin console (#4137)
+* Added security, telemetry, and license configuration to first time wizard (#3990)
+* Added setting for configuring login page theme (#3978)
+* Simplified Gallery page
+* Added name and vault to the set secret value modal (#4174)
+* Improved editing performance when PSScriptAnalyzer is enabled
+
+#### Apps
+
+* Added -Target to New-UDButton (#4134)
+* Added -Sx and -Style to New-UDCardHeader and New-UDCardMedia (#4146, #4145)
+* Added support for setting initial table state (#2779)
+* Added support for Publish-PSUStaticApp
+* Added app debugger tab
+* Added -Network to New-UDNivoChart
+* Added -Sx to New-UDTimeline and New-UDTimelineItem (#3804)
+* App editor now includes IntelliSense for app module (#2082)
+
+#### Agent
+
+* Added 'PSU\_AgentLogLevel' environment variable to allow for controlling the log level.
+* Added support for configuring agent with user-scoped settings location
+
+#### Automation
+
+* Added default Run On setting (#4116)
+
+#### Portal
+
+* Branding settings are now applied to the portal (#4119)
+
+#### Platform
+
+* Added support for managing PSResource repositories (#4106)
+* Default admin password complexity is now a warning rather than an error (#4006)
+* Added support for changing git repository and branch
+* Improved extension module load behavior (#4141)
+* Added support for managing vaults (#1470)
+* Added account-based licensing (#2978)
+
+### Bug Fixes
+
+#### Admin Console
+
+* Fixed an alignment issue with the Reload Configuration button (#4136)
+* Fixed an issue displaying scripts in nested folders (#4127)
+* Fixed an issue with Job Run Id (#4153)
+* Fixed navigation issues in the admin console (#4158, #4162)
+* Fixed an issue with displaying saved string array schedule parameters (#4144)
+* Fixed an issue with the re-run job button (#4150)
+* Fixed an issue adding computer tags multiple times (#4186)
+
+#### Apps
+
+* Fixed an issue running apps defined in modules
+* Fixed an issue where all apps could reload when one changed (#4121)
+* Fixed an issue when attempting to run blocked scripts (#3987)
+* Fixed an issue with table row selection when using server side processing (#4000)
+
+#### Automation
+
+* Fixed an issue running jobs longer than 30 minutes when using PostgreSQL (#4177)
+* Fixed an issue running jobs across all computers in a computer group
+
+#### Cmdlets
+
+* Fixed an issue with Get-PSUSchedule not returning the next execution time (#4168)
+
+#### Installer (MSI)
+
+* Fixed an issue with the desktop mode install
+
+#### Platform
+
+* Fixed an issue where psu.exe was missing from the installation media
+* Fixed an issue with computer heartbeats in multi-node environments (#4167)
+
 ## 5.1.2 - 12/17/2024
 
 #### Bug Fixes
@@ -519,7 +602,7 @@ Automation
 ## 5.0.7 - 9/16/2024
 
 {% hint style="info" %}
-This update adds an index to the database. If your service fails to start in a timely manner during the install, you may need to run a [manual schema update](https://docs.powershelluniversal.com/config/persistence#manual-schema-install-update).&#x20;
+This update adds an index to the database. If your service fails to start in a timely manner during the install, you may need to run a [manual schema update](https://docs.powershelluniversal.com/config/persistence#manual-schema-install-update).
 {% endhint %}
 
 #### Admin Console
@@ -782,15 +865,15 @@ Please review the [upgrade documentation](getting-started/upgrading.md) before u
 * Extended job filtering to include all columns
 * Added support for dynamic parameters
 * Added -Tags to Invoke-PSUScript
-* Added -HideChildren, -HideTriggered, -HideScheduled to Get-PSUJob&#x20;
-* Added a page to view jobs for a schedule&#x20;
+* Added -HideChildren, -HideTriggered, -HideScheduled to Get-PSUJob
+* Added a page to view jobs for a schedule
 * JobRunId has been promoted from an experimental to a full feature
 * Added support for script documentation
 
 #### Apps
 
 * Added -Path to Start-UDDownload
-* Added -Sx to New-UDBadge&#x20;
+* Added -Sx to New-UDBadge
 * Added -RemoveMargin to New-UDCard
 * Added -SelectedTabIndex to New-UDTabs
 * Added -Enhanced to New-UDTransferList
@@ -801,7 +884,7 @@ Please review the [upgrade documentation](getting-started/upgrading.md) before u
 
 * Added preview version of Portal
 * Added Portal Page designer
-* Added Portal Widget editor&#x20;
+* Added Portal Widget editor
 
 #### Platform
 
@@ -829,7 +912,6 @@ Please review the [upgrade documentation](getting-started/upgrading.md) before u
 * Added an option for updating git submodules during a pull
 * Added Pause Git Sync button
 * Added configuration settings for the loading page
-* Added a page to view all tagged resources&#x20;
+* Added a page to view all tagged resources
 * Added support for uploading to Published Folders
 * Added support for database cache
-

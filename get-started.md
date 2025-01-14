@@ -50,7 +50,27 @@ chmod +x ./PSU/Universal.Server
 
 ## Open PowerShell Universal
 
-By default, PowerShell Universal runs on port 5000 of localhost. The first time you start the server, you will be prompted to set the local administrator user name and password. Next, log in to the Admin Console.&#x20;
+By default, PowerShell Universal runs on port 5000 of localhost.&#x20;
+
+### First Run Wizard&#x20;
+
+The first run wizard will step you through the basic settings of PowerShell Universal. This includes the default admin username and password, security settings, telemetry settings and license.&#x20;
+
+#### Admin Account&#x20;
+
+The admin account is used to login to PowerShell Universal. It will display a warning if the password does not match the complexity requirements. You can always change it later.&#x20;
+
+#### Security Settings&#x20;
+
+Select from the drop down of security settings. They tweak certain features of PowerShell Universal in different levels of security. If you plan on cloning from a git repository, skip this step or set it to default.&#x20;
+
+#### Telemetry&#x20;
+
+PowerShell Universal can [send anonymous telemetry data](platform/telemetry.md) if you opt-in to do so. If you plan to clone from a git repository, skip this setting.&#x20;
+
+#### License&#x20;
+
+Add your license file. This is optional and needs to be an account-based license key.
 
 ## Create an API
 
