@@ -112,6 +112,7 @@
 * [Role Based Access](apps/role-based-access.md)
 * [Scheduled Endpoints](apps/scheduled-endpoints.md)
 * [Sessions](apps/sessions.md)
+* [Static Apps](apps/static-apps.md)
 * [Themes](apps/themes/README.md)
   * [Cascading Style Sheets](apps/themes/cascading-style-sheets.md)
   * [Styles](apps/themes/styles.md)
