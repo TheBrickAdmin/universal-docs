@@ -4,7 +4,7 @@ description: Debugging scripts in PowerShell Universal.
 
 # Debugging Scripts
 
-Scripts that run within Universal run within background processes or runspaces which may make it hard to debug what is happening within a script. You can use cmdlets like Write-Debug and Write-Verbose to provide more information in logs for dashboards and jobs.
+Scripts that run within Universal run within background processes or runspaces which may make it hard to debug what is happening within a script. You can use cmdlets like Write-Debug and Write-Verbose to provide more information in logs for apps and jobs.
 
 ## Visual Studio Remote Debugger
 
@@ -16,13 +16,13 @@ Using the PowerShell [Universal Visual Studio Code Extension](visual-studio-code
 The integrated debugger is support in PowerShell 7 and integrated environments. It is not supported in Windows PowerShell.
 {% endhint %}
 
-The integrated debugger allows for access to a debug console for running scripts. You can include the `Wait-Debugger` cmdlet call in your scripts and they will transition to an In Breakpoint state. Once this takes place, you can view the Job to run commands against the script.&#x20;
+The integrated debugger allows for access to a debug console for running scripts. You can include the `Wait-Debugger` cmdlet call in your scripts and they will transition to an In Breakpoint state. Once this takes place, you can view the Job to run commands against the script.
 
 ### Scripts
 
-PowerShell Universal integrates directly with the PowerShell debugger. You can include `Wait-Debugger` within your scripts to cause them to pause.&#x20;
+PowerShell Universal integrates directly with the PowerShell debugger. You can include `Wait-Debugger` within your scripts to cause them to pause.
 
-For example, assume you have a script with a `Wait-Debugger` call included. The first line will execute and then it will pause once it reaches the second line.&#x20;
+For example, assume you have a script with a `Wait-Debugger` call included. The first line will execute and then it will pause once it reaches the second line.
 
 <pre class="language-powershell"><code class="lang-powershell"><strong>$Processes = Get-Process
 </strong><strong>Wait-Debugger
@@ -32,15 +32,15 @@ Once a script is paused, you will see a terminal for debugging the script.
 
 <figure><img src="../.gitbook/assets/image (1) (1) (1).png" alt=""><figcaption><p>Debugger Terminal</p></figcaption></figure>
 
-You can then use the built in debugging commands to step through the script.&#x20;
+You can then use the built in debugging commands to step through the script.
 
 <figure><img src="../.gitbook/assets/image (1) (1) (1) (1).png" alt=""><figcaption><p>Debugging Commands</p></figcaption></figure>
 
 ### Apps
 
-You can use `Wait-Debugger` directly in your PowerShell Universal Apps. You can include this command in event handlers and dynamics to pause the app execution and evaluate the current state of the script.&#x20;
+You can use `Wait-Debugger` directly in your PowerShell Universal Apps. You can include this command in event handlers and dynamics to pause the app execution and evaluate the current state of the script.
 
-For example, you can include `Wait-Debugger` in a dynamic.&#x20;
+For example, you can include `Wait-Debugger` in a dynamic.
 
 ```powershell
 New-UDApp -Title 'PowerShell Universal' -Content {
@@ -53,15 +53,13 @@ New-UDApp -Title 'PowerShell Universal' -Content {
 }
 ```
 
-The result is the app will display the loading skeleton because the PowerShell debugger is in breakpoint.&#x20;
+The result is the app will display the loading skeleton because the PowerShell debugger is in breakpoint.
 
 <figure><img src="../.gitbook/assets/image (60).png" alt=""><figcaption></figcaption></figure>
 
-Within the admin console, you can find the session and endpoint that is currently waiting the breakpoint by clicking Sessions, expanding the session ID, and then expanding the endpoint. Only endpoints that are waiting in breakpoint will have an expansion panel.&#x20;
+Within the admin console, you can click the Debugger tab to view the current breakpoints that the app is waiting on. The debugger provides a terminal for evaluating commands against the runspace. You can use any standard PowerShell command. You can also use the debugging tools such as stepping and source code listing. There are buttons available at the top of the console.
 
-<figure><img src="../.gitbook/assets/image (63).png" alt=""><figcaption></figcaption></figure>
-
-The debug console can now be used to run commands to learn more about the current state of the execution. Use `?` to learn about debugging commands. You can use commands like `Get-Variable` to get information about variable state. Execute `c` to allow the endpoint to continue executing.&#x20;
+You can use commands like `Get-Variable` to get information about variable state. Execute `c` to allow the endpoint to continue executing.
 
 ## Logging Scripts
 
@@ -75,19 +73,15 @@ You can use the Live Log view on the Log tab to view logs for the selected API.
 
 Jobs log extensively. You will see console and pipeline output. If you set`$DebugPreference` or `$VerbosePreference` , you will also see those streams in the console output. You can add additional log messages using `Write-Debug` or `Write-Verbose` .
 
-### Dashboards
+### Apps
 
-{% hint style="info" %}
-See [dashboard Development](broken-reference/) for information on how to use VS Code for development.
-{% endhint %}
-
-Dashboards log informational, warning and error messages to their log. It's recommended to use logging when starting a dashboard rather than trying to attach a debugger. You can also use the `$DebugPreference` variable to get additional information during your dashboard startup.
+Apps log informational, warning and error messages to their log. It's recommended to use logging when starting an app rather than trying to attach a debugger. You can also use the `$DebugPreference` variable to get additional information during your app startup.
 
 ```powershell
 $DebugPreference = 'Continue'
 
-New-UDDashboard -Title 'Test' -Content {
-    Write-Debug "My dashboard is loading. I have am $user with $roles"
+New-UDApp -Title 'Test' -Content {
+    Write-Debug "My app is loading. I have am $user with $roles"
 
     New-UDTypography -Text 'Hello, world'
 }
@@ -106,12 +100,12 @@ You can debug any script within Universal (or any PowerShell process, really) us
 First, you will need to ensure that the script will wait for you to connect the debugger before continuing. This means that you'll need to include a `Wait-Debugger` command somewhere in your script.
 
 {% hint style="info" %}
-Dashboards will only wait 10 seconds during startup so putting a Wait-Debugger in them may not work. You should rely on the use of $DebugPreference and Write-Debug to diagnosis dashboard startup issues.
+Apps will only wait 10 seconds during startup so putting a Wait-Debugger in them may not work. You should rely on the use of $DebugPreference and Write-Debug to diagnosis app startup issues.
 {% endhint %}
 
 ### Executing your script
 
-Now that you have your script setup to pause and wait for the debugger, you will want to execute your script. For jobs, just start the job. For APIs, you will need to make a request to the API via the endpoint you are trying to test. For dashboards, you will want to load the page in your browser. For authentication and authorization, you will want to login.
+Now that you have your script setup to pause and wait for the debugger, you will want to execute your script. For jobs, just start the job. For APIs, you will need to make a request to the API via the endpoint you are trying to test. For apps, you will want to load the page in your browser. For authentication and authorization, you will want to login.
 
 ### Finding your process ID
 
@@ -125,9 +119,9 @@ Jobs run in their own isolated process within Universal. All you will have to do
 
 APIs run in a single PowerShell process. It does not start a new process for each API call. You can locate the API process by finding the pwsh or PowerShell process with the command line that includes `StartApi`.
 
-#### Dashboards
+#### Apps
 
-Dashboards run in their own isolated PowerShell process. The process ID is listed in the dashboard table within the Admin Console.
+Apps run in their own isolated PowerShell process. The process ID is listed in the app table within the Admin Console.
 
 #### Authentication and Authorization
 
