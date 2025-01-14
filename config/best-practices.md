@@ -6,6 +6,14 @@ description: Learn how to best configure PowerShell Universal.
 
 ## General
 
+### Consider Immutable Configuration in Production
+
+PowerShell Universal is built on a script-based configuration system. This allows for new instances of PowerShell Universal to be configured without database calls and directly from a repository of scripts. This means that when deploying to production, it is advantageous to use a well-tested artifact as the basis for your PowerShell Universal configuration.
+
+You can use tools like Docker Compose to layer PowerShell Universal configuration files into a container image without having to manually update a production system by hand. PowerShell Universal also provides a [Deployment ](deployments.md)feature that can be used to publish configurations directly to an instance. You can then use a continuous deployment system to update your production instances as part of an automated workflow.
+
+Depending on your needs, typically based on team size and usage, this type of configuration may not be necessary.
+
 ### Avoiding Writing to the Repository Directory
 
 {% hint style="info" %}
@@ -239,10 +247,10 @@ The result is a table that loads immediately but displays loading skeletons in t
 
 ### Avoid 3rd Party Cmdlet Calls in Widgets
 
-When possible, avoid calling 3rd party cmdlets directly in Widgets. Each widget has its own runspace but all Widgets run in the PowerShell Universal server process. Calling cmdlets directly in Widgets causes .NET assemblies to load into the server. This can cause conflicts with other assembly loads. Additionally, memory may not be reclaimed from commands called in the runspace.&#x20;
+When possible, avoid calling 3rd party cmdlets directly in Widgets. Each widget has its own runspace but all Widgets run in the PowerShell Universal server process. Calling cmdlets directly in Widgets causes .NET assemblies to load into the server. This can cause conflicts with other assembly loads. Additionally, memory may not be reclaimed from commands called in the runspace.
 
-Using `Invoke-PSUScript` and running a script in an external environment ensures that all assembly loads are contained to a separate process and all memory is reclaim after the process exits.&#x20;
+Using `Invoke-PSUScript` and running a script in an external environment ensures that all assembly loads are contained to a separate process and all memory is reclaim after the process exits.
 
-For a good user experience, it may not always make sense to start a job for every interaction on a page. Consider using the PSUCache cmdlets to set and retrieve data from the cache to improve page loading times.&#x20;
+For a good user experience, it may not always make sense to start a job for every interaction on a page. Consider using the PSUCache cmdlets to set and retrieve data from the cache to improve page loading times.
 
-Not all modules will cause issues so this technique may not always be necessary. Script modules are very unlikely to cause any issues with assembly loading.&#x20;
+Not all modules will cause issues so this technique may not always be necessary. Script modules are very unlikely to cause any issues with assembly loading.
