@@ -32,11 +32,13 @@ In some environments, it may be necessary to specify the domain name in the user
 
 ### Roles
 
-Secret variables can include role-based access. Roles limit who can use the secret in their scripts and as run as credentials.&#x20;
+Secret variables can include role-based access. Roles limit who can use the secret in their scripts and as run as credentials.
 
-{% hint style="warning" %}
-If a role is specified on a secret, the secret will not be available in scheduled scripts.&#x20;
-{% endhint %}
+When a secret has a role defined, it will not be accessible in resources that cannot provide that role. This can include the following:&#x20;
+
+* Schedule Jobs
+* Unauthenticated APIs or Apps&#x20;
+* Terminals
 
 ## Vaults
 
@@ -112,7 +114,7 @@ Now, when you are creating secrets, you will see the AzureKeyVault available.
 
 ![](<../.gitbook/assets/image (310) (1) (1) (1).png>)
 
-To ensure the application is connected to Azure and the key vault is registered, run the script within `initialize.ps1`. We recommend running the script in an external PowerShell process to avoid assembly conflicts with PowerShell Universal DLLs.&#x20;
+To ensure the application is connected to Azure and the key vault is registered, run the script within `initialize.ps1`. We recommend running the script in an external PowerShell process to avoid assembly conflicts with PowerShell Universal DLLs.
 
 ```powershell
 $pwsh = (Get-Command pwsh).Path
@@ -198,23 +200,23 @@ The following variables are available throughout all environments within PowerSh
 
 There are a set of predefined variables that are available in API endpoints. You'll be able to use these variables in your scripts.
 
-| Variable         | Description                                                                                                                                                                                                     | Type                                           |
-| ---------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------- |
-| $Url             | URL the client used to call the endpoint                                                                                                                                                                        | String                                         |
-| $Method          | The HTTP method used to call the endpoint                                                                                                                                                                       | String                                         |
-| $Headers         | Headers provided by the client to call the endpoint                                                                                                                                                             | Hashtable                                      |
-| $Body            | The UTF8 encoded string of the content of the request                                                                                                                                                           | String                                         |
-| $Data            | Binary byte array for the content of the request                                                                                                                                                                | Byte\[]                                        |
-| $RemoteIpAddress | The remote IP address used to make the request.                                                                                                                                                                 | String                                         |
-| $LocalIpAddress  | The local IP address used to service the request.                                                                                                                                                               | String                                         |
-| $RemotePort      | The remote port that was called to make the request.                                                                                                                                                            | Integer                                        |
-| $LocalPort       | The local port that was used to service the request.                                                                                                                                                            | Integer                                        |
-| $Identity        | The identity name of the principal accessing the API.                                                                                                                                                           | String                                         |
-| $UrlDefinition   | The definition for the URL.                                                                                                                                                                                     | String                                         |
-| $ConnectionId    | The [HTTP Context connection ID](https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.http.connectioninfo.id?view=aspnetcore-6.0#Microsoft\_AspNetCore\_Http\_ConnectionInfo\_Id).                  | String                                         |
-| $SessionId       | The [HTTP Context session ID.](https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.http.isession.id?view=aspnetcore-6.0#Microsoft\_AspNetCore\_Http\_ISession\_Id)                                 | String                                         |
-| $RequestId       | The [HTTP Context request ID.](https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.http.httpcontext.traceidentifier?view=aspnetcore-6.0#Microsoft\_AspNetCore\_Http\_HttpContext\_TraceIdentifier) | String                                         |
-| $ClaimsPrincipal | The claims principal of the current user. This is the same object that is provided to role-based access policies.                                                                                               | [ClaimPrincipal](../apps/role-based-access.md) |
+| Variable         | Description                                                                                                                                                                                                 | Type                                           |
+| ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------- |
+| $Url             | URL the client used to call the endpoint                                                                                                                                                                    | String                                         |
+| $Method          | The HTTP method used to call the endpoint                                                                                                                                                                   | String                                         |
+| $Headers         | Headers provided by the client to call the endpoint                                                                                                                                                         | Hashtable                                      |
+| $Body            | The UTF8 encoded string of the content of the request                                                                                                                                                       | String                                         |
+| $Data            | Binary byte array for the content of the request                                                                                                                                                            | Byte\[]                                        |
+| $RemoteIpAddress | The remote IP address used to make the request.                                                                                                                                                             | String                                         |
+| $LocalIpAddress  | The local IP address used to service the request.                                                                                                                                                           | String                                         |
+| $RemotePort      | The remote port that was called to make the request.                                                                                                                                                        | Integer                                        |
+| $LocalPort       | The local port that was used to service the request.                                                                                                                                                        | Integer                                        |
+| $Identity        | The identity name of the principal accessing the API.                                                                                                                                                       | String                                         |
+| $UrlDefinition   | The definition for the URL.                                                                                                                                                                                 | String                                         |
+| $ConnectionId    | The [HTTP Context connection ID](https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.http.connectioninfo.id?view=aspnetcore-6.0#Microsoft_AspNetCore_Http_ConnectionInfo_Id).                  | String                                         |
+| $SessionId       | The [HTTP Context session ID.](https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.http.isession.id?view=aspnetcore-6.0#Microsoft_AspNetCore_Http_ISession_Id)                                 | String                                         |
+| $RequestId       | The [HTTP Context request ID.](https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.http.httpcontext.traceidentifier?view=aspnetcore-6.0#Microsoft_AspNetCore_Http_HttpContext_TraceIdentifier) | String                                         |
+| $ClaimsPrincipal | The claims principal of the current user. This is the same object that is provided to role-based access policies.                                                                                           | [ClaimPrincipal](../apps/role-based-access.md) |
 
 ### Apps
 
@@ -321,7 +323,7 @@ $UAJob.Identity.Name
 
 #### Checking if a job was run manually
 
-You can check if a job was run manually by using the Schedule and Trigger properties.&#x20;
+You can check if a job was run manually by using the Schedule and Trigger properties.
 
 ```powershell
 $Manual = $UAJob.Schedule -eq $null -and $UAJob.Trigger -eq $null
@@ -329,7 +331,7 @@ $Manual = $UAJob.Schedule -eq $null -and $UAJob.Trigger -eq $null
 
 ## API
 
-* [New-PSUVariable](https://github.com/ironmansoftware/universal-docs/blob/v5/cmdlets/New-PSUVariable.txt)
-* [Get-PSUVariable](https://github.com/ironmansoftware/universal-docs/blob/v5/cmdlets/Get-PSUVariable.txt)
-* [Remove-PSUVariable](https://github.com/ironmansoftware/universal-docs/blob/v5/cmdlets/Remove-PSUVariable.txt)
-* [Set-PSUVariable](https://github.com/ironmansoftware/universal-docs/blob/v5/cmdlets/Set-PSUVariable.txt)
+* [New-PSUVariable](../cmdlets/New-PSUVariable.txt)
+* [Get-PSUVariable](../cmdlets/Get-PSUVariable.txt)
+* [Remove-PSUVariable](../cmdlets/Remove-PSUVariable.txt)
+* [Set-PSUVariable](../cmdlets/Set-PSUVariable.txt)
