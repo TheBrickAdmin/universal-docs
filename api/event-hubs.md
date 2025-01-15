@@ -5,7 +5,7 @@ description: Receive client events from the PowerShell Universal server.
 # Event Hubs
 
 {% hint style="info" %}
-Event Hubs require a [license](../licensing.md).&#x20;
+Event Hubs require a [license](../licensing.md).
 {% endhint %}
 
 Event Hubs provide the ability to connect client to the PowerShell Universal server. Once connected, the PowerShell Universal server can send messages to the connected clients and they will run a local PowerShell script block.
@@ -16,58 +16,7 @@ To create an event hub, click APIs \ Event Hub and click Create New Event Hub. E
 
 ## Agent
 
-The agent process is responsible for responding to Event Hub requests. You can learn more about installing the agent on our [Installation page](../getting-started/).&#x20;
-
-### agent.json
-
-After installing the agent, you will need to configure the client by using an `agent.json` file. This file should be created in `%ProgramData%\PowerShellUniversal`. Changes to this file require a restart of the Agent service.
-
-{% hint style="warning" %}
-The installer will not create the folder or file automatically.&#x20;
-{% endhint %}
-
-This JSON file configures the Agent to connect to the hub and run scripts when invoked.
-
-```json
-{
-    "Connections": [
-        {
-            "Url": "http://localhost:5000",
-            "Hub": "eventHub",
-            "AppToken": "tokenXyz",
-            "ScriptPath": "script.ps1"
-        }
-    ]
-}
-```
-
-### Options
-
-The below options can be included in the `agent.json` file.
-
-#### Connections
-
-These are the connections to Event Hubs. Each connection can contain it's own URL, hub, authentication and script to execute.
-
-#### URL (Required)
-
-The URL of the PowerShell Universal service.
-
-#### Hub (Required)
-
-The name of the Event Hub.
-
-#### AppToken
-
-The app token used to authentication against the hub.
-
-#### UseDefaultCredentials
-
-Windows Authentication will be used to authenticate against the hub.
-
-#### ScriptPath
-
-The script to execute when an event is received. This script is read into memory and not from disk. Variables such as `$PSScriptRoot` are currently not supported. This is optional as event hubs can also run commands directly.
+You will need to install and configure the [PowerShell Universal Agent](../config/agent.md) to use Event Hubs.&#x20;
 
 ## Send Events
 
@@ -103,9 +52,9 @@ Show-UDToast $Result
 This example provides a way to run scripts on remote machines without having to install another instance of PowerShell Universal.
 {% endhint %}
 
-This example allows for sending scripts to remote machines and executing them with a generic event hub script.&#x20;
+This example allows for sending scripts to remote machines and executing them with a generic event hub script.
 
-First, create an event hub in PowerShell Universal.  This example does not use authentication.
+First, create an event hub in PowerShell Universal. This example does not use authentication.
 
 Next, install the Event Hub Client on the remote machine. Create a configuration file in `%ProgramData%\PowerShellUniversal\eventHubClient.json`.
 
@@ -121,7 +70,7 @@ Next, install the Event Hub Client on the remote machine. Create a configuration
 }
 ```
 
-Next, create a helper script.ps1 to receive the event hub data and process requests from PSU to invoke scripts. It creates a new temporary PS1 file and uses the `$EventData` passed down from the event hub message with the contents and parameters for the script.&#x20;
+Next, create a helper script.ps1 to receive the event hub data and process requests from PSU to invoke scripts. It creates a new temporary PS1 file and uses the `$EventData` passed down from the event hub message with the contents and parameters for the script.
 
 ```powershell
 $TempFile = (New-TemporaryFile).FullName + ".ps1"
@@ -152,8 +101,4 @@ Send-PSUEvent -Hub eventHub -ConnectionId $Connection.ConnectionId -Data @{
 }
 ```
 
-From here you could event use the script to schedule jobs to run on the remote machines using the event hub client.&#x20;
-
-
-
-&#x20;
+From here you could event use the script to schedule jobs to run on the remote machines using the event hub client.

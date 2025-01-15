@@ -165,6 +165,7 @@
 
 ## ⚙️ Configuration <a href="#config" id="config"></a>
 
+* [Agent](config/agent.md)
 * [App Settings](config/settings.md)
 * [Best Practices](config/best-practices.md)
 * [Branding](config/login-page.md)
