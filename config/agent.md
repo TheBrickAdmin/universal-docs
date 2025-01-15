@@ -4,7 +4,7 @@ description: Information about PowerShell Universal agents.
 
 # Agent
 
-You can learn more about installing the agent on our [Installation page](../getting-started/).
+The PowerShell Universal Agent is used to provide the Event Hub feature to remote clients. You can learn more about installing the agent on our [Installation page](../getting-started/).
 
 ## agent.json
 
